@@ -2,10 +2,36 @@
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav-links');
 const navLinks = document.querySelectorAll('.nav-links li');
+const body = document.body;
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('nav-active')) {
+        nav.classList.remove('nav-active');
+        burger.classList.remove('toggle');
+        body.style.overflow = 'auto';
+    }
+});
+
+// Close mobile menu when clicking a link
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('nav-active');
+        burger.classList.remove('toggle');
+        body.style.overflow = 'auto';
+    });
+});
 
 burger.addEventListener('click', () => {
     // Toggle Navigation
     nav.classList.toggle('nav-active');
+    
+    // Toggle body scroll
+    if (nav.classList.contains('nav-active')) {
+        body.style.overflow = 'hidden';
+    } else {
+        body.style.overflow = 'auto';
+    }
     
     // Animate Links
     navLinks.forEach((link, index) => {
@@ -18,6 +44,15 @@ burger.addEventListener('click', () => {
     
     // Burger Animation
     burger.classList.toggle('toggle');
+});
+
+// Handle orientation change
+window.addEventListener('orientationchange', () => {
+    if (nav.classList.contains('nav-active')) {
+        nav.classList.remove('nav-active');
+        burger.classList.remove('toggle');
+        body.style.overflow = 'auto';
+    }
 });
 
 // Smooth Scrolling for Navigation Links
@@ -79,6 +114,32 @@ document.querySelectorAll('.service-card').forEach(card => {
         card.style.transform = 'translateY(0)';
     });
 });
+
+// Add touch support for service cards
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('touchstart', () => {
+        card.style.transform = 'translateY(-10px)';
+    });
+    
+    card.addEventListener('touchend', () => {
+        card.style.transform = 'translateY(0)';
+    });
+});
+
+// Optimize scroll performance
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            // Update scroll-based animations here
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Add passive scroll listener for better performance
+document.addEventListener('scroll', () => {}, { passive: true });
 
 // Add smooth scroll behavior to the entire page
 document.documentElement.style.scrollBehavior = 'smooth'; 
