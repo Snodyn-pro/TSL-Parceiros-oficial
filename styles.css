@@ -49,7 +49,7 @@ header {
     z-index: 1000;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    height: 90px;
+    height: 90px; /* Mantendo a altura original */
 }
 
 nav {
@@ -68,18 +68,20 @@ nav {
     align-items: center;
     text-decoration: none;
     background: transparent;
-    height: 120px;
+    height: 90px; /* Ajustado para caber na navbar */
     padding: 0.5rem 0;
     position: absolute;
     left: 2rem;
 }
 
 .logo img {
-    height: 150px;
+    height: 80px; /* Ajustado para caber na navbar */
     width: auto;
     object-fit: contain;
     object-position: left center;
     transition: transform 0.3s ease;
+    max-width: none;
+    display: block;
 }
 
 .nav-links {
@@ -91,6 +93,7 @@ nav {
     gap: 2.5rem;
     margin-left: auto;
     margin-right: 2rem;
+    padding-left: 180px; /* Adicionado para mover os links para a esquerda e evitar sobreposição com o logo */
 }
 
 .nav-links a {
@@ -124,16 +127,16 @@ nav {
 /* Responsive Navigation */
 @media (max-width: 1024px) {
     header {
-        height: 100px;
+        height: 90px; /* Ajustado para manter consistência */
     }
 
     .logo {
-        height: 100px;
+        height: 90px; /* Ajustado para caber na navbar */
         left: 1rem;
     }
 
     .logo img {
-        height: 120px;
+        height: 70px; /* Ajustado para caber em tablets */
         width: auto;
     }
 
@@ -144,16 +147,17 @@ nav {
     .nav-links {
         gap: 1.5rem;
         margin-right: 1rem;
+        padding-left: 150px; /* Ajustado para tablets */
     }
 }
 
 @media (max-width: 768px) {
     header {
-        height: 80px;
+        height: 80px !important; /* Ajustado para melhor visualização em mobile */
     }
 
     .logo {
-        height: 70px;
+        height: 80px !important; /* Ajustado para caber na navbar mobile */
         left: 1rem;
         display: flex;
         align-items: center;
@@ -161,18 +165,22 @@ nav {
     }
 
     .logo img {
-        height: 60px;
-        width: 60px;
+        height: 60px !important; /* Ajustado para caber melhor em mobile */
+        width: auto !important;
         margin: 0;
         object-fit: contain;
         object-position: center;
     }
 
+    nav {
+        padding: 0 1rem;
+    }
+
     .nav-links {
         position: fixed;
         right: -100%;
-        top: 90px;
-        height: calc(100vh - 90px);
+        top: 80px; /* Ajustado para a nova altura do header */
+        height: calc(100vh - 80px);
         background: rgba(255, 255, 255, 0.98);
         flex-direction: column;
         align-items: center;
@@ -185,24 +193,46 @@ nav {
     }
 
     .nav-overlay {
-        top: 90px;
-        height: calc(100vh - 90px);
+        top: 80px; /* Ajustado para a nova altura do header */
+        height: calc(100vh - 80px);
+    }
+
+    /* Ajustar margem do hero */
+    .hero {
+        margin-top: 80px !important; /* Ajustado para a nova altura do header */
     }
 }
 
 @media (max-width: 480px) {
     header {
-        height: 70px;
+        height: 70px !important; /* Ajustado para o novo tamanho do header */
     }
 
     .logo {
-        height: 60px;
+        height: 70px !important; /* Ajustado para o novo tamanho */
         left: 0.8rem;
     }
 
     .logo img {
-        height: 50px;
-        width: 50px;
+        height: 50px !important; /* Ajustado para melhor visualização */
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+    }
+
+    .nav-links {
+        top: 70px !important; /* Ajustado para a nova altura do header */
+        height: calc(100vh - 70px) !important;
+    }
+
+    .nav-overlay {
+        top: 70px !important;
+        height: calc(100vh - 70px) !important;
+    }
+
+    /* Ajustar margem do hero */
+    .hero {
+        margin-top: 70px !important; /* Ajustado para a nova altura do header */
     }
 }
 
@@ -1276,7 +1306,7 @@ footer {
     .nav-links {
         position: fixed;
         right: -100%;
-        top: 80px;
+        top: 80px; /* Ajustado para a nova altura do header */
         height: calc(100vh - 80px);
         background: rgba(255, 255, 255, 0.98);
         flex-direction: column;
@@ -1381,10 +1411,10 @@ footer {
 
     .nav-overlay {
         position: fixed;
-        top: 80px;
+        top: 70px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 70px);
         background: rgba(0, 0, 0, 0.5);
         opacity: 0;
         visibility: hidden;
@@ -1516,21 +1546,26 @@ footer {
     }
 
     .nav-links {
-        top: 70px;
-        height: calc(100vh - 70px);
+        top: 70px !important; /* Ajustado para a nova altura do header */
+        height: calc(100vh - 70px) !important;
     }
 
     .nav-overlay {
-        top: 70px;
-        height: calc(100vh - 70px);
+        top: 70px !important;
+        height: calc(100vh - 70px) !important;
+    }
+
+    /* Ajustar margem do hero */
+    .hero {
+        margin-top: 70px !important; /* Ajustado para a nova altura do header */
     }
 }
 
 /* Fix for very small screens */
 @media (max-width: 360px) {
     .logo img {
-        height: 42px;
-        width: 130px !important;
+        height: 65px !important; /* Aumentado de 42px */
+        width: auto !important;
         margin-left: 0 !important;
     }
 
@@ -1808,42 +1843,49 @@ footer {
 }
 
 .value-card {
-    background: var(--white);
-    padding: 0.8rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
     position: relative;
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
     overflow: hidden;
-    flex: 1;
-    min-width: 0;
-    max-width: 250px;
-    margin: 0 auto;
-    transform-origin: center;
+    border-left-width: 5px;
+    border-left-style: solid;
+    cursor: pointer;
 }
 
 .value-card:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: var(--shadow-hover);
-}
-
-.value-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: var(--dark-color);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .value-card h3 {
+    display: flex;
+    align-items: flex-start; /* Alinhar ao topo para textos com múltiplas linhas */
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
     color: var(--dark-color);
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
+    position: relative;
+    line-height: 1.3;
 }
 
-.value-card p {
-    color: var(--text-light);
-    font-size: 0.8rem;
-    line-height: 1.4;
-    margin-bottom: 0;
+.value-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-right: 0.8rem;
+    margin-top: 0.2rem; /* Ajuste fino para alinhar com a primeira linha do texto */
+    color: var(--primary-color);
+    min-width: 30px; /* Largura mínima para evitar desalinhamento */
+}
+
+.value-card .value-content {
+    max-height: 500px;
+    opacity: 1;
+    overflow: visible;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -1855,10 +1897,13 @@ footer {
     }
 
     .value-card {
-        padding: 1.5rem;
-        margin: 0;
-        max-width: none;
-        width: 100%;
+        margin-bottom: 15px !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+        cursor: pointer !important;
     }
 
     .value-icon {
@@ -1874,6 +1919,16 @@ footer {
     .value-card p {
         font-size: 0.9rem;
         line-height: 1.6;
+    }
+
+    .value-card h3 i {
+        margin-right: 10px !important;
+        color: var(--primary-color) !important;
+        min-width: 20px !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        margin-top: 3px !important; /* Ajuste fino para alinhar com a primeira linha do texto */
     }
 }
 
@@ -2700,24 +2755,85 @@ p {
         margin-bottom: 15px !important;
         max-width: 100% !important;
         padding: 0 !important;
-        overflow: hidden !important;
+        overflow: visible !important; /* Alterado de hidden para visible */
         border-radius: 8px !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
     }
     
     .value-card h3 {
-        padding: 15px !important;
-        padding-right: 40px !important; /* Espaço para a seta */
+        padding: 20px 50px 20px 15px !important; /* Aumentado padding superior/inferior e à direita */
         cursor: pointer !important;
         position: relative !important;
-        display: flex !important;
-        align-items: center !important;
+        display: block !important; /* Alterado de flex para block */
         background: rgba(46, 204, 113, 0.05) !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        line-height: 1.5 !important;
+        min-height: auto !important; /* Permitir crescimento natural */
+        height: auto !important;
+        font-size: 1.1rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     
+    /* Estilos específicos para os ícones nos títulos */
+    .value-card h3 .value-icon,
     .value-card h3 i {
         margin-right: 10px !important;
+        display: inline-block !important;
+        vertical-align: top !important;
+        font-size: 1rem !important;
+        position: relative !important;
+        top: 2px !important;
+        width: 20px !important;
+        text-align: center !important;
         color: var(--primary-color) !important;
+    }
+    
+    /* Assegurar que o texto do título fica na mesma linha que o ícone */
+    .value-card h3 span {
+        display: inline !important;
+        vertical-align: top !important;
+    }
+    
+    /* Remover estilo duplicado */
+    /* .value-card h3 i {
+        margin-right: 10px !important;
+        color: var(--primary-color) !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+    } */
+}
+
+.value-card p {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    /* ... existing code ... */
+    
+    /* Estilos específicos para os ícones nos títulos */
+    .value-card h3 .value-icon,
+    .value-card h3 i {
+        margin-right: 10px !important;
+        display: inline-block !important;
+        vertical-align: top !important;
+        font-size: 1rem !important;
+        position: relative !important;
+        top: 2px !important;
+        width: 20px !important;
+        text-align: center !important;
+        color: var(--primary-color) !important;
+    }
+    
+    /* Assegurar que o texto do título fica na mesma linha que o ícone */
+    .value-card h3 span {
+        display: inline !important;
+        vertical-align: top !important;
     }
     
     /* Adicionar seta no extremo direito */
@@ -2726,15 +2842,16 @@ p {
         font-family: 'Font Awesome 5 Free' !important;
         font-weight: 900 !important;
         position: absolute !important;
-        right: 10px !important; /* Reduzido para ficar mais próximo da borda */
-        top: 50% !important;
+        right: 15px !important; /* Aumentado para afastar da borda */
+        top: 50% !important; /* Centralizado verticalmente */
         transform: translateY(-50%) !important;
         transition: transform 0.3s !important;
         display: block !important;
         color: var(--primary-color) !important;
-        font-size: 18px !important;
+        font-size: 20px !important;
         width: 20px !important;
-        text-align: right !important; /* Alinhado à direita */
+        text-align: center !important;
+        z-index: 10 !important; /* Garantir que está acima do texto */
     }
     
     .value-card.active h3:after {
@@ -2744,13 +2861,25 @@ p {
     .value-content {
         max-height: 0 !important;
         overflow: hidden !important;
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out !important;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out, opacity 0.3s ease-out !important;
         padding: 0 15px !important;
+        opacity: 0 !important;
+        clear: both !important; /* Garantir que não haja elementos flutuantes */
     }
     
     .value-card.active .value-content {
         max-height: 500px !important;
         padding: 15px !important;
+        opacity: 1 !important;
+    }
+    
+    /* Remover quaisquer limitações de texto em todos os headers/títulos */
+    .service-header, .value-card h3, .vision-text h2 {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        max-width: none !important;
+        width: 100% !important;
     }
     
     /* Visão mobile - Sem acordeão */
@@ -2778,12 +2907,60 @@ p {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
         margin-bottom: 15px !important;
     }
-    
-    /* Garantir que textos longos não se sobreponham à seta */
-    .service-header, .value-card h3 {
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        max-width: calc(100% - 40px) !important; /* Ajustado espaço para a seta */
+}
+
+/* Override específico para garantir que a logo tenha o tamanho correto em mobile */
+@media screen and (max-width: 768px) {
+    header nav .logo {
+        height: 100px !important;
+        width: auto !important;
+        position: absolute !important;
+        left: 0.8rem !important;
+        top: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        z-index: 1001 !important;
     }
-} 
+    
+    header nav .logo img {
+        height: 100px !important;
+        width: auto !important;
+        max-width: none !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+    }
+    
+    /* Ajustar margem do hero para o novo tamanho do header */
+    .hero {
+        margin-top: 150px !important;
+    }
+    
+    /* Ajustar posição dos elementos do menu */
+    .nav-links {
+        top: 150px !important;
+        height: calc(100vh - 150px) !important;
+    }
+    
+    .nav-overlay {
+        top: 150px !important;
+        height: calc(100vh - 150px) !important;
+    }
+}
+
+/* Medidas específicas para telas muito pequenas */
+@media screen and (max-width: 480px) {
+    header nav .logo {
+        height: 80px !important;
+        left: 0.5rem !important;
+    }
+    
+    header nav .logo img {
+        height: 80px !important;
+    }
+}
+
+/* Forçar exibição da logo */
+.logo img {
+    display: block !important;
+}

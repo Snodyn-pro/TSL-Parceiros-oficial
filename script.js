@@ -298,13 +298,13 @@ function initializeMobileFeatures() {
     if (!isMobileDevice()) return;
     
     // Evitar inicialização duplicada
-    if (mobileInitialized) {
+    if (window.mobileInitialized) {
         console.log("Mobile features already initialized, skipping");
         return;
     }
     
     console.log("Mobile features initialized");
-    mobileInitialized = true;
+    window.mobileInitialized = true;
 
     // Ensure all accordions start collapsed on mobile
     document.querySelectorAll('.service-card, .value-card').forEach(card => {
@@ -362,7 +362,7 @@ function initializeMobileFeatures() {
         }
     });
 
-    // Values Accordion (Mobile Only)
+    // Values Accordion (Mobile Only) - CORREÇÃO
     const valueCards = document.querySelectorAll('.value-card');
     console.log("Encontrados", valueCards.length, "cards de valores");
     
@@ -371,12 +371,16 @@ function initializeMobileFeatures() {
         if (header) {
             console.log("Adicionando listener ao valor", index + 1);
             
-            // Estilizar o header para a seta no extremo direito
+            // Estilizar o header para permitir múltiplas linhas
             header.style.position = 'relative';
             header.style.paddingRight = '40px';
-            header.style.textOverflow = 'ellipsis';
-            header.style.whiteSpace = 'nowrap';
-            header.style.overflow = 'hidden';
+            header.style.whiteSpace = 'normal'; // Permitir quebra de linha
+            header.style.overflow = 'visible';
+            header.style.textOverflow = 'initial';
+            header.style.minHeight = '60px'; // Garantir altura mínima
+            header.style.display = 'flex';
+            header.style.alignItems = 'flex-start'; // Alinhar ao topo em vez do centro
+            header.style.lineHeight = '1.3';
             
             // Remover todos os event listeners existentes
             const headerClone = header.cloneNode(true);
@@ -435,6 +439,106 @@ function initializeMobileFeatures() {
     }
 }
 
+// Inicializar as funcionalidades mobile quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM carregado - inicializando funcionalidades");
+    
+    // Verificar se a variável mobileInitialized ainda não existe
+    if (typeof window.mobileInitialized === 'undefined') {
+        window.mobileInitialized = false;
+    }
+    
+    // Inicializar funcionalidades mobile
+    initializeMobileFeatures();
+    
+    // Adicionar event listener para o card de valores (desktop e mobile)
+    const valueCards = document.querySelectorAll('.value-card');
+    console.log("Adicionando listeners a", valueCards.length, "cards de valores (desktop e mobile)");
+    
+    valueCards.forEach((card, index) => {
+        // Garantir que os títulos estão visíveis integralmente
+        const header = card.querySelector('h3');
+        if (header) {
+            // Remover qualquer limitação de altura/largura que possa cortar o texto
+            header.style.whiteSpace = 'normal';
+            header.style.textOverflow = 'clip';
+            header.style.overflow = 'visible';
+            header.style.maxWidth = '100%';
+            header.style.width = 'auto';
+            header.style.minHeight = 'auto';
+            header.style.height = 'auto';
+            header.style.padding = '20px 50px 20px 15px';
+            header.style.lineHeight = '1.5';
+            header.style.display = 'block';
+            
+            // Para dispositivos móveis, garantir que o texto não seja cortado
+            if (window.innerWidth <= 768) {
+                header.style.fontSize = '1.1rem';
+            }
+        }
+        
+        // Certifique-se de que o card inteiro seja clicável
+        card.style.cursor = 'pointer';
+        
+        // Adicionar evento de clique no card inteiro
+        card.addEventListener('click', function(e) {
+            // Impedir que o evento de clique se propague
+            e.stopPropagation();
+            
+            console.log("Clicou no card de valor", index + 1);
+            
+            // TRUE TOGGLE: Se estiver ativo, desativa. Se não estiver, ativa.
+            const isActive = this.classList.contains('active');
+            
+            // Fecha todos os outros cards
+            valueCards.forEach(c => {
+                if (c !== this) {
+                    c.classList.remove('active');
+                }
+            });
+            
+            // Toggle no card atual
+            if (isActive) {
+                this.classList.remove('active');
+            } else {
+                this.classList.add('active');
+            }
+        });
+    });
+    
+    // Garantir que os valores possam ser expandidos em desktop também
+    const addDesktopValueCardListeners = function() {
+        if (window.innerWidth > 768) {
+            console.log("Adicionando comportamento de clique para desktop");
+            valueCards.forEach((card, index) => {
+                const content = card.querySelector('.value-content');
+                if (content) {
+                    content.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
+                    content.style.opacity = '1';
+                    content.style.maxHeight = 'none';
+                }
+                
+                // Adicionar efeito de hover mais pronunciado
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                });
+            });
+        }
+    };
+    
+    // Executar imediatamente
+    addDesktopValueCardListeners();
+    
+    // Executar novamente se a janela for redimensionada
+    window.addEventListener('resize', addDesktopValueCardListeners);
+});
+
 // Remover código de debugging desnecessário
 window.addEventListener('load', function() {
     // Verificar se estamos em modo mobile e aplicar padding apropriado
@@ -474,4 +578,83 @@ window.addEventListener('load', function() {
             visionParagraph.style.overflow = 'visible';
         }
     }
+});
+
+// Aplicar tamanho correto ao logo em dispositivos móveis
+document.addEventListener('DOMContentLoaded', function() {
+    // Função para ajustar o tamanho do logo baseado na largura da tela
+    function adjustLogoSize() {
+        const logo = document.querySelector('.logo img');
+        if (!logo) return;
+        
+        console.log("Ajustando tamanho do logo");
+        
+        // Adicionar classe especial para aplicar estilos
+        if (window.innerWidth <= 768) {
+            logo.classList.add('mobile-logo');
+            
+            // Aplicar estilos diretamente ao elemento
+            logo.style.height = '100px';
+            logo.style.width = 'auto';
+            logo.style.maxWidth = 'none';
+            logo.style.minWidth = 'auto';
+            logo.style.display = 'block';
+            logo.style.objectFit = 'contain';
+            logo.style.objectPosition = 'left center';
+            
+            // Também ajustar o contêiner do logo
+            const logoContainer = document.querySelector('.logo');
+            if (logoContainer) {
+                logoContainer.classList.add('mobile-logo-container');
+                logoContainer.style.height = '100px';
+                logoContainer.style.position = 'absolute';
+                logoContainer.style.left = '0.8rem';
+                logoContainer.style.display = 'flex';
+                logoContainer.style.alignItems = 'center';
+                logoContainer.style.zIndex = '1001';
+            }
+            
+            // Adicionar um estilo específico para mobile na página
+            if (!document.getElementById('mobile-logo-style')) {
+                const style = document.createElement('style');
+                style.id = 'mobile-logo-style';
+                style.innerHTML = `
+                    .mobile-logo {
+                        height: 100px !important;
+                        width: auto !important;
+                        max-width: none !important;
+                        display: block !important;
+                    }
+                    
+                    .mobile-logo-container {
+                        height: 100px !important;
+                    }
+                    
+                    @media (max-width: 480px) {
+                        .mobile-logo {
+                            height: 80px !important;
+                        }
+                        
+                        .mobile-logo-container {
+                            height: 80px !important;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        } else {
+            // Remover classes em telas maiores
+            logo.classList.remove('mobile-logo');
+            const logoContainer = document.querySelector('.logo');
+            if (logoContainer) {
+                logoContainer.classList.remove('mobile-logo-container');
+            }
+        }
+    }
+    
+    // Executar no carregamento
+    adjustLogoSize();
+    
+    // E também quando a janela é redimensionada
+    window.addEventListener('resize', adjustLogoSize);
 });
