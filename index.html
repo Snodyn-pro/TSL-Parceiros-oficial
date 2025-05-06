@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TSL Parceiros</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
@@ -13,36 +19,37 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="#" class="logo">
-                    <img src="logo.png" alt="TSL Parceiros Logo" style="height: 120px; width: 380px; object-fit: contain; margin: 0; margin-left: -150px; display: inline-block; vertical-align: middle;">
+                <a href="#inicio">
+                    <img src="logo.png" alt="TSL Parceiros Logo">
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#visao">Visão</a></li>
-                <li><a href="#valores">Valores</a></li>
-                <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li style="--i:1"><a href="#inicio">Início</a></li>
+                <li style="--i:2"><a href="#servicos">Serviços</a></li>
+                <li style="--i:3"><a href="#sobre">Sobre</a></li>
+                <li style="--i:4"><a href="#visao">Visão</a></li>
+                <li style="--i:5"><a href="#valores">Valores</a></li>
+                <li style="--i:6"><a href="#depoimentos">Depoimentos</a></li>
+                <li style="--i:7"><a href="#contato">Contato</a></li>
             </ul>
             <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </nav>
+        <div class="nav-overlay"></div>
     </header>
 
     <main>
         <section id="inicio" class="hero">
             <div class="hero-banner">
-                <img src="banner-consultoria.png.png" alt="Banner TSL Parceiros" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="banner-consultoria.png.png" alt="Banner TSL Parceiros">
             </div>
             <div class="hero-content">
-                <h1 style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Transformando Vidas e Negócios com Sabedoria</h1>
-                <p class="hero-subtitle">Soluções integradas de consultoria, educação financeira e reestruturação estratégica para indivíduos e microempresas</p>
-                <div class="hero-services" style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; margin: 2rem 0; display: flex; justify-content: center; gap: 2rem;">
+                <h1>Transformando Vidas e Negócios com Sabedoria</h1>
+                <p class="hero-subtitle">De mãos dadas com o teu crescimento rumo ao sucesso sustentável</p>
+                <div class="hero-services">
                     <div class="service-icon">
                         <i class="fas fa-lightbulb" style="font-size: 2.5rem; color: #FFD700;"></i>
                         <span style="color: #FFD700; display: block; margin-top: 0.5rem;">Sabedoria</span>
@@ -72,51 +79,74 @@
             <h2>Nossos Serviços</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Serviços</h3>
-                    <p>Soluções consultivas personalizadas para impulsionar o crescimento do seu negócio.</p>
-                    <ul class="service-features">
-                        <li>Criação de Negócios</li>
-                        <li>Abertura de Empresas</li>
-                        <li>Consultoria de Gestão e Controlo</li>
-                        <li>Consultoria Financeira</li>
-                        <li>Contabilidade e Fiscalidade</li>
-                        <li>Consultoria de Investimentos</li>
-                    </ul>
+                    <div class="service-header">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Estratégia e Criação de Negócio</h3>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Desenvolvimento de ideias e modelos de negócio</li>
+                            <li>Abertura de empresas</li>
+                            <li>Estratégia de crescimento e investimento</li>
+                        </ul>
+                        <a href="#contato" class="service-cta">Contate-nos</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-bullhorn"></i>
-                    <h3>Marketing</h3>
-                    <p>Estratégias de marketing inovadoras para aumentar a visibilidade e o alcance do seu negócio.</p>
-                    <ul class="service-features">
-                        <li>Plano de Marketing</li>
-                        <li>Estratégia de Marketing</li>
-                        <li>Marketing Digital</li>
-                        <li>Branding</li>
-                        <li>Gestão de Redes Sociais</li>
-                    </ul>
+                    <div class="service-header">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Finanças e Contabilidade</h3>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Contabilidade e fiscalidade</li>
+                            <li>Consultoria financeira e controlo de gestão</li>
+                            <li>Finanças e investimentos pessoais e empresariais</li>
+                        </ul>
+                        <a href="#contato" class="service-cta">Contate-nos</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Formações</h3>
-                    <p>Programas de formação especializados para desenvolver competências e impulsionar o crescimento profissional.</p>
-                    <ul class="service-features">
-                        <li>Desenvolvimento Pessoal</li>
-                        <li>Gestão e Administração</li>
-                        <li>Finanças Pessoais e de Empresas</li>
-                    </ul>
+                    <div class="service-header">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Marketing e Imagem</h3>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Plano e estratégia de marketing</li>
+                            <li>Marketing digital e branding</li>
+                            <li>Gestão de redes sociais</li>
+                        </ul>
+                        <a href="#contato" class="service-cta">Contate-nos</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Processos e Operações</h3>
-                    <p>Melhoria contínua de processos operacionais para aumentar eficiência e reduzir custos.</p>
-                    <ul class="service-features">
-                        <li>Mapeamento de Processos</li>
-                        <li>Otimização de Operações</li>
-                        <li>Gestão da Qualidade</li>
-                        <li>Implementação de Sistemas</li>
-                        <li>Gestão de Projetos</li>
-                    </ul>
+                    <div class="service-header">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Operações e Processos</h3>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Mapeamento e optimização de processos</li>
+                            <li>Gestão da qualidade e implementação de sistemas</li>
+                            <li>Gestão de projetos e melhoria contínua</li>
+                        </ul>
+                        <a href="#contato" class="service-cta">Contate-nos</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Sustentabilidade e ESG</h3>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Diagnóstico ESG e matriz de materialidade</li>
+                            <li>Desenvolvimento e implementação de estratégias ESG</li>
+                            <li>Elaboração de relatórios de sustentabilidade segundo padrões internacionais (GRI, ABNT PR 2030-ESG)</li>
+                        </ul>
+                        <a href="#contato" class="service-cta">Contate-nos</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -165,39 +195,59 @@
             <h2>Nossos Valores</h2>
             <div class="values-grid">
                 <div class="value-card" style="border-left: 5px solid #FFD700;">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
+                    <h3>
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        Sabedoria com Propósito
+                    </h3>
+                    <div class="value-content">
+                        <p>Unimos sabedoria antiga como os princípios do Rei Salomão, experiência profissional e formação académica para decisões estratégicas com propósito, integridade, alta performance e crescimento sustentável.</p>
                     </div>
-                    <h3>Sabedoria com Propósito</h3>
-                    <p>Unimos sabedoria antiga como os princípios do Rei Salomão, experiência profissional e formação académica para decisões estratégicas com propósito, integridade, alta performance e crescimento sustentável.</p>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #90EE90;">
-                    <div class="value-icon">
-                        <i class="fas fa-handshake"></i>
+                    <h3>
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        Parceria que Transforma
+                    </h3>
+                    <div class="value-content">
+                        <p>Caminhamos de mãos dadas com os nossos clientes, com proximidade real e compromisso genuíno com os seus resultados. Somos parceiros de confiança que acreditam no poder da relação humana para gerar transformação duradoura.</p>
                     </div>
-                    <h3>Parceria que Transforma</h3>
-                    <p>Caminhamos de mãos dadas com os nossos clientes, com proximidade real e compromisso genuíno com os seus resultados. Somos parceiros de confiança que acreditam no poder da relação humana para gerar transformação duradoura.</p>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #87CEEB;">
-                    <div class="value-icon">
-                        <i class="fas fa-book-reader"></i>
+                    <h3>
+                        <div class="value-icon">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        Conhecimento em Movimento
+                    </h3>
+                    <div class="value-content">
+                        <p>Transformamos conhecimento em ação, com soluções práticas, simples e acessíveis. Comunicamos com clareza, falamos a linguagem dos nossos clientes e entregamos ferramentas que fazem diferença no dia a dia.</p>
                     </div>
-                    <h3>Conhecimento em Movimento</h3>
-                    <p>Transformamos conhecimento em ação, com soluções práticas, simples e acessíveis. Comunicamos com clareza, falamos a linguagem dos nossos clientes e entregamos ferramentas que fazem diferença no dia a dia.</p>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #FF6B6B;">
-                    <div class="value-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <h3>
+                        <div class="value-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        Crescimento Sustentável
+                    </h3>
+                    <div class="value-content">
+                        <p>Trabalhamos para que cada cliente evolua de forma estruturada e duradoura. Queremos mais do que sucesso rápido — buscamos crescimento inteligente, responsável e alinhado com o futuro que desejam construir.</p>
                     </div>
-                    <h3>Crescimento Sustentável</h3>
-                    <p>Trabalhamos para que cada cliente evolua de forma estruturada e duradoura. Queremos mais do que sucesso rápido — buscamos crescimento inteligente, responsável e alinhado com o futuro que desejam construir.</p>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #FFA500;">
-                    <div class="value-icon">
-                        <i class="fas fa-heart"></i>
+                    <h3>
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        Impacto com Valor
+                    </h3>
+                    <div class="value-content">
+                        <p>Acreditamos na força da transformação económica e social. Cada ação nossa é orientada para gerar valor real: nos negócios, nas famílias e na sociedade. O nosso sucesso é medido pelo impacto positivo que deixamos juntos.</p>
                     </div>
-                    <h3>Impacto com Valor</h3>
-                    <p>Acreditamos na força da transformação económica e social. Cada ação nossa é orientada para gerar valor real: nos negócios, nas famílias e na sociedade. O nosso sucesso é medido pelo impacto positivo que deixamos juntos.</p>
                 </div>
             </div>
         </section>
@@ -244,6 +294,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Graças à consultoria da TSL Parceiros, conseguimos reduzir nossos custos operacionais em 25% e aumentar nossa margem de lucro significativamente. O diferencial foi a abordagem personalizada que respeitou o nosso modelo de negócio."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Cliente">
+                        <div class="author-info">
+                            <h4>Ana Pereira</h4>
+                            <p>Proprietária, Boutique Elegance</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -286,10 +349,11 @@
                     <div class="form-group">
                         <select required>
                             <option value="">Selecione o Serviço</option>
-                            <option value="consultoria">Consultoria</option>
-                            <option value="marketing">Marketing</option>
-                            <option value="formacoes">Formações</option>
-                            <option value="processos">Processos e Operações</option>
+                            <option value="estrategia">1. Estratégia e Criação de Negócio</option>
+                            <option value="financas">2. Finanças e Contabilidade</option>
+                            <option value="marketing">3. Marketing e Imagem</option>
+                            <option value="operacoes">4. Operações e Processos</option>
+                            <option value="sustentabilidade">5. Sustentabilidade e ESG</option>
                         </select>
                     </div>
                     <div class="form-group">

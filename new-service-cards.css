@@ -1,0 +1,203 @@
+/* New Service Cards with TSL Parceiros color palette */
+
+.new-services-section {
+    padding: 4rem 1rem;
+    background-color: #f8f8f8;
+}
+
+.new-services-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--dark-color);
+    position: relative;
+}
+
+.new-services-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-1);
+}
+
+.new-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.new-service-card {
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.new-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+}
+
+.new-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.new-service-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto 1rem;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.new-service-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+    opacity: 0.3;
+}
+
+.new-service-icon i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.new-service-content {
+    padding: 1.5rem 2rem 2rem;
+    text-align: center;
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-service-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.new-service-description {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.new-service-link {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: white;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 130px;
+}
+
+.new-service-link:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.new-service-link::after {
+    content: ' »';
+    font-size: 1.1em;
+}
+
+.new-service-email {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #f5a623, #f57f23);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    flex: 1;
+    max-width: 100px;
+}
+
+.new-service-email:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f57f23, #f5a623);
+}
+
+.new-service-email i {
+    margin-right: 5px;
+}
+
+/* Alternate color variations for cards */
+.new-service-card:nth-child(2) {
+    background-color: var(--secondary-color);
+}
+
+.new-service-card:nth-child(3) {
+    background-color: var(--accent-color);
+}
+
+.new-service-card:nth-child(4) {
+    background-color: #219653;
+}
+
+.new-service-card:nth-child(5) {
+    background-color: #1e8350;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .new-services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .new-service-link, .new-service-email {
+        max-width: 200px;
+        margin-bottom: 0.5rem;
+    }
+} 

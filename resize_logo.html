@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Resizer</title>
+</head>
+<body>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = function() {
+                canvas.width = 512;
+                canvas.height = 512;
+                ctx.drawImage(img, 0, 0, 512, 512);
+                
+                // Convert to data URL
+                const resizedImage = canvas.toDataURL('image/png');
+                
+                // Create download link
+                const link = document.createElement('a');
+                link.download = 'logo_mobile_512.png';
+                link.href = resizedImage;
+                link.click();
+            };
+            
+            img.src = 'logo.png';
+        };
+    </script>
+</body>
+</html> 

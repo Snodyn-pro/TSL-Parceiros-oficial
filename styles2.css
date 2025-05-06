@@ -13,4 +13,57 @@
     background: transparent;
     filter: brightness(1.2) contrast(1.2);
     mix-blend-mode: normal;
+}
+
+/* Estilos para os cards de serviço expansíveis */
+.service-card {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.service-header i {
+    margin-bottom: 1rem;
+}
+
+.service-header p {
+    margin-bottom: 1rem;
+}
+
+.service-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding-top: 0;
+}
+
+.service-card.active .service-content {
+    max-height: 300px; /* ajuste conforme necessário */
+    opacity: 1;
+    padding-top: 1rem;
+}
+
+.service-card::after {
+    content: '\f078'; /* ícone de seta para baixo */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.service-card.active::after {
+    transform: translateX(-50%) rotate(180deg);
 } 
