@@ -582,79 +582,42 @@ window.addEventListener('load', function() {
 
 // Aplicar tamanho correto ao logo em dispositivos móveis
 document.addEventListener('DOMContentLoaded', function() {
-    // Função para ajustar o tamanho do logo baseado na largura da tela
-    function adjustLogoSize() {
-        const logo = document.querySelector('.logo img');
+    // Função para ajustar o logo de acordo com o tamanho da tela
+    function adjustLogo() {
+        const logo = document.querySelector('.logo-img');
+        
         if (!logo) return;
         
-        console.log("Ajustando tamanho do logo");
-        
-        // Adicionar classe especial para aplicar estilos
+        // Os ajustes de imagem são feitos via CSS com content: url()
+        // Aqui apenas ajustamos outros estilos se necessário
         if (window.innerWidth <= 768) {
-            logo.classList.add('mobile-logo');
-            
-            // Aplicar estilos diretamente ao elemento
-            logo.style.height = '100px';
-            logo.style.width = 'auto';
-            logo.style.maxWidth = 'none';
-            logo.style.minWidth = 'auto';
-            logo.style.display = 'block';
-            logo.style.objectFit = 'contain';
-            logo.style.objectPosition = 'left center';
-            
-            // Também ajustar o contêiner do logo
             const logoContainer = document.querySelector('.logo');
             if (logoContainer) {
-                logoContainer.classList.add('mobile-logo-container');
-                logoContainer.style.height = '100px';
-                logoContainer.style.position = 'absolute';
-                logoContainer.style.left = '0.8rem';
-                logoContainer.style.display = 'flex';
-                logoContainer.style.alignItems = 'center';
-                logoContainer.style.zIndex = '1001';
+                logoContainer.style.height = '110px';
+                logoContainer.style.top = '-25px';
             }
             
-            // Adicionar um estilo específico para mobile na página
-            if (!document.getElementById('mobile-logo-style')) {
-                const style = document.createElement('style');
-                style.id = 'mobile-logo-style';
-                style.innerHTML = `
-                    .mobile-logo {
-                        height: 100px !important;
-                        width: auto !important;
-                        max-width: none !important;
-                        display: block !important;
-                    }
-                    
-                    .mobile-logo-container {
-                        height: 100px !important;
-                    }
-                    
-                    @media (max-width: 480px) {
-                        .mobile-logo {
-                            height: 80px !important;
-                        }
-                        
-                        .mobile-logo-container {
-                            height: 80px !important;
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
+            // Ajustar tamanho para telas muito pequenas
+            if (window.innerWidth <= 480) {
+                logo.style.height = '110px';
+            } else {
+                logo.style.height = '120px';
             }
         } else {
-            // Remover classes em telas maiores
-            logo.classList.remove('mobile-logo');
+            // Desktop
+            logo.style.height = '140px';
+            
             const logoContainer = document.querySelector('.logo');
             if (logoContainer) {
-                logoContainer.classList.remove('mobile-logo-container');
+                logoContainer.style.height = '125px';
+                logoContainer.style.top = '-25px';
             }
         }
     }
     
     // Executar no carregamento
-    adjustLogoSize();
+    adjustLogo();
     
     // E também quando a janela é redimensionada
-    window.addEventListener('resize', adjustLogoSize);
+    window.addEventListener('resize', adjustLogo);
 });

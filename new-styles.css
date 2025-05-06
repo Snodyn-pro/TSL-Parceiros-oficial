@@ -1,0 +1,40 @@
+/* Estilos específicos para justificar apenas seções designadas */
+
+/* Sobre Nós */
+.about-text p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
+    line-height: 1.6 !important;
+}
+
+/* Nossa Visão */
+.vision-text p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
+    line-height: 1.6 !important;
+}
+
+/* Cards de Nossos Valores */
+.value-card p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
+    line-height: 1.6 !important;
+}
+
+/* O que nossos clientes dizem */
+.testimonial-content p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
+    line-height: 1.6 !important;
+}
+
+/* Ajuste para dispositivos móveis */
+@media (max-width: 480px) {
+    .testimonial-content p {
+        text-align: justify !important;
+    }
+} 
