@@ -54,7 +54,7 @@ header {
     z-index: 1000;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    height: 20px; /* Diminuído de 90px */
+    height: 90px; /* Increased from 20px */
 }
 
 nav {
@@ -73,16 +73,16 @@ nav {
     align-items: center;
     text-decoration: none;
     background: transparent;
-    height: 125px; /* Aumentado */
+    height: 150px; /* Increased */
     padding: 0;
     position: absolute;
     left: 2rem;
-    top: -25px; /* Ajustado para ficar mais para fora */
-    z-index: 1001; /* Garantir que fique por cima de outros elementos */
+    top: -25px; /* Adjusted to position logo properly with larger navbar */
+    z-index: 1001; /* Ensure it stays on top of other elements */
 }
 
 .logo img {
-    height: 120px; /* Aumentado para ficar metade para fora */
+    height: 140px; /* Increased */
     width: auto;
     object-fit: contain;
     object-position: left center;
@@ -100,7 +100,7 @@ nav {
     gap: 2.5rem;
     margin-left: auto;
     margin-right: 2rem;
-    padding-left: 180px; /* Adicionado para mover os links para a esquerda e evitar sobreposição com o logo */
+    padding-left: 200px; /* Increased to allow more space for logo */
 }
 
 .nav-links a {
@@ -134,17 +134,17 @@ nav {
 /* Responsive Navigation */
 @media (max-width: 1024px) {
     header {
-        height: 70px; /* Diminuído */
+        height: 80px; /* Adjusted for tablets */
     }
 
     .logo {
-        height: 125px; /* Ajustado para consistência */
+        height: 140px; /* Adjusted for consistency */
         left: 1rem;
         top: -25px;
     }
 
     .logo img {
-        height: 120px; /* Ajustado para tablets */
+        height: 130px; /* Adjusted for tablets */
         width: auto;
     }
 
@@ -155,26 +155,26 @@ nav {
     .nav-links {
         gap: 1.5rem;
         margin-right: 1rem;
-        padding-left: 150px; /* Ajustado para tablets */
+        padding-left: 170px; /* Adjusted for tablets */
     }
 }
 
 @media (max-width: 768px) {
     header {
-        height: 80px !important; /* Ajustado para melhor visualização em mobile */
+        height: 80px !important; /* Enforced height for mobile */
     }
 
     .logo {
-        height: 110px !important; /* Ajustado para ficar metade para fora em mobile */
+        height: 120px !important; /* Adjusted for mobile */
         left: 1rem;
-        top: -15px !important; /* Ajustado para mobile */
+        top: -20px !important; /* Adjusted for mobile */
         display: flex;
         align-items: center;
         justify-content: flex-start;
     }
 
     .logo img {
-        height: 110px !important; /* Ajustado para mobile */
+        height: 120px !important; /* Adjusted for mobile */
         width: auto !important;
         margin: 0;
         object-fit: contain;
@@ -188,7 +188,7 @@ nav {
     .nav-links {
         position: fixed;
         right: -100%;
-        top: 80px; /* Ajustado para a nova altura do header */
+        top: 80px; /* Match the header height */
         height: calc(100vh - 80px);
         background: rgba(255, 255, 255, 0.98);
         flex-direction: column;
@@ -202,35 +202,110 @@ nav {
     }
 
     .nav-overlay {
-        top: 80px; /* Ajustado para a nova altura do header */
+        position: fixed;
+        top: 80px; /* Match the header height */
+        left: 0;
+        width: 100%;
         height: calc(100vh - 80px);
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 998;
+        backdrop-filter: blur(3px);
     }
 
-    /* Ajustar margem do hero */
-    .hero {
-        margin-top: 80px !important; /* Ajustado para a nova altura do header */
+    /* Make sure the burger menu is visible and properly styled */
+    .burger {
+        display: block;
+        cursor: pointer;
+        width: 30px;
+        height: 20px;
+        position: absolute;
+        right: 1rem;
+        z-index: 1000;
+    }
+    
+    /* Ensure proper animation of burger menu items */
+    .burger div {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--primary-color);
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+    
+    .burger div:nth-child(1) {
+        top: 0;
+        transform-origin: left;
+    }
+    
+    .burger div:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .burger div:nth-child(3) {
+        bottom: 0;
+        transform-origin: left;
+    }
+    
+    /* Navigation active states */
+    .nav-active .nav-links {
+        right: 0;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-active .nav-links li {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: calc(0.1s * var(--i));
+    }
+    
+    .nav-active .burger div:nth-child(1) {
+        transform: rotate(45deg);
+        top: 0;
+        left: 5px;
+    }
+    
+    .nav-active .burger div:nth-child(2) {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    
+    .nav-active .burger div:nth-child(3) {
+        transform: rotate(-45deg);
+        bottom: -1px;
+        left: 5px;
+    }
+    
+    .nav-active ~ .nav-overlay {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
 @media (max-width: 480px) {
     header {
-        height: 70px !important; /* Ajustado para o novo tamanho do header */
+        height: 70px !important; /* Adjusted for smaller screens */
     }
 
     .logo {
-        height: 70px !important; /* Ajustado para o novo tamanho */
+        height: 100px !important; /* Reduced height for smaller screens */
         left: 0.8rem;
+        top: -15px !important;
     }
 
     .logo img {
-        height: 50px !important; /* Ajustado para melhor visualização */
+        height: 100px !important; /* Adjusted for smaller screens */
         width: auto !important;
         max-width: none !important;
         min-width: 0 !important;
     }
 
     .nav-links {
-        top: 70px !important; /* Ajustado para a nova altura do header */
+        top: 70px !important; /* Match the new header height */
         height: calc(100vh - 70px) !important;
     }
 
@@ -239,13 +314,9 @@ nav {
         height: calc(100vh - 70px) !important;
     }
 
-    /* Ajustar margem do hero */
+    /* Adjust hero margin for new header height */
     .hero {
-        margin-top: 70px !important; /* Ajustado para a nova altura do header */
-    }
-
-    .burger {
-        right: 0.5rem; /* Moving hamburger menu a bit more to the left on smaller screens */
+        margin-top: 70px !important; /* Match the new header height */
     }
 }
 
@@ -259,7 +330,7 @@ nav {
     text-align: center;
     color: #fff;
     overflow: hidden;
-    margin-top: 70px; /* Ajustado para a nova altura do header */
+    margin-top: 90px; /* Updated to match the new navbar height */
     padding: 0;
 }
 
@@ -1303,7 +1374,7 @@ footer {
 /* Mobile Navigation */
 @media (max-width: 768px) {
     header {
-        height: 65px;
+        height: 80px; /* Already defined above, ensuring consistency */
         background: rgba(255, 255, 255, 0.98);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
@@ -1313,13 +1384,13 @@ footer {
     }
 
     .logo img {
-        height: 45px;
+        height: 120px; /* Already defined above, ensuring consistency */
     }
 
     .nav-links {
         position: fixed;
         right: -100%;
-        top: 80px; /* Ajustado para a nova altura do header */
+        top: 80px; /* Match the header height */
         height: calc(100vh - 80px);
         background: rgba(255, 255, 255, 0.98);
         flex-direction: column;
@@ -1333,26 +1404,115 @@ footer {
     }
 
     .nav-overlay {
-        top: 80px; /* Ajustado para a nova altura do header */
+        position: fixed;
+        top: 80px; /* Match the header height */
+        left: 0;
+        width: 100%;
         height: calc(100vh - 80px);
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 998;
+        backdrop-filter: blur(3px);
     }
 
-    /* Ajustar margem do hero */
-    .hero {
-        margin-top: 80px !important; /* Ajustado para a nova altura do header */
-    }
-
+    /* Make sure the burger menu is visible and properly styled */
     .burger {
         display: block;
         cursor: pointer;
         width: 30px;
         height: 20px;
         position: absolute;
-        right: 0.7rem; /* Changed from 1rem to 0.7rem to move it left */
+        right: 1rem;
         z-index: 1000;
+    }
+    
+    /* Ensure proper animation of burger menu items */
+    .burger div {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: var(--primary-color);
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+    
+    .burger div:nth-child(1) {
+        top: 0;
+        transform-origin: left;
+    }
+    
+    .burger div:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .burger div:nth-child(3) {
+        bottom: 0;
+        transform-origin: left;
+    }
+    
+    /* Navigation active states */
+    .nav-active .nav-links {
+        right: 0;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-active .nav-links li {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: calc(0.1s * var(--i));
+    }
+    
+    .nav-active .burger div:nth-child(1) {
+        transform: rotate(45deg);
+        top: 0;
+        left: 5px;
+    }
+    
+    .nav-active .burger div:nth-child(2) {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    
+    .nav-active .burger div:nth-child(3) {
+        transform: rotate(-45deg);
+        bottom: -1px;
+        left: 5px;
+    }
+    
+    .nav-active ~ .nav-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Estilos adicionais para o menu mobile - Updated */
+@media (max-width: 768px) {
+    body.nav-active {
+        overflow: hidden;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 80px; /* Updated to match header height */
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        width: 100%;
+        height: calc(100vh - 80px); /* Updated to match header height */
+        padding: 2rem;
+        gap: 1.5rem;
+        transition: 0.3s ease;
+        z-index: 999;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-links li {
+        width: 100%;
+        height: auto;
         opacity: 0;
         transform: translateX(50px);
         transition: all 0.3s ease;
@@ -1380,30 +1540,6 @@ footer {
         outline: none;
     }
 
-    .burger div {
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: var(--primary-color);
-        transition: all 0.3s ease;
-        border-radius: 2px;
-    }
-
-    .burger div:nth-child(1) {
-        top: 0;
-        transform-origin: left;
-    }
-
-    .burger div:nth-child(2) {
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .burger div:nth-child(3) {
-        bottom: 0;
-        transform-origin: left;
-    }
-
     .nav-active .nav-links {
         right: 0;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
@@ -1412,32 +1548,15 @@ footer {
     .nav-active .nav-links li {
         opacity: 1;
         transform: translateX(0);
-        transition-delay: calc(0.1s * var(--i));
     }
 
-    .nav-active .burger div:nth-child(1) {
-        transform: rotate(45deg);
-        top: 0;
-        left: 5px;
-    }
-
-    .nav-active .burger div:nth-child(2) {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    .nav-active .burger div:nth-child(3) {
-        transform: rotate(-45deg);
-        bottom: -1px;
-        left: 5px;
-    }
-
+    /* Overlay para quando o menu estiver aberto */
     .nav-overlay {
         position: fixed;
-        top: 70px;
+        top: 80px; /* Updated to match header height */
         left: 0;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 80px); /* Updated to match header height */
         background: rgba(0, 0, 0, 0.5);
         opacity: 0;
         visibility: hidden;
@@ -1449,6 +1568,14 @@ footer {
     .nav-active ~ .nav-overlay {
         opacity: 1;
         visibility: visible;
+    }
+    
+    /* Update for smaller screens */
+    @media (max-width: 480px) {
+        .nav-links, .nav-overlay {
+            top: 70px !important; /* Match smaller header height */
+            height: calc(100vh - 70px) !important;
+        }
     }
 }
 
@@ -1473,10 +1600,6 @@ footer {
         margin-left: 0 !important;
         object-position: left;
     }
-    
-    .burger {
-        right: 0.5rem; /* Moving hamburger menu a bit more to the left on smaller screens */
-    }
 
     /* Hero Section */
     .hero {
@@ -1490,6 +1613,741 @@ footer {
     
     .hero-subtitle {
         font-size: 0.9rem;
+        padding: 0;
+    }
+    
+    .hero-services {
+        gap: 0.6rem !important;
+        padding: 0.6rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .service-icon {
+        min-width: 60px;
+    }
+    
+    .service-icon i {
+        font-size: 1.5rem !important;
+    }
+    
+    .service-icon span {
+        font-size: 0.7rem !important;
+        margin-top: 0.3rem !important;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Service Cards */
+    .service-card {
+        padding: 1.2rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .service-features li {
+        font-size: 0.85rem;
+    }
+
+    /* Values */
+    .values h2 {
+        font-size: 1.6rem;
+    }
+
+    .value-card {
+        padding: 1.2rem;
+    }
+
+    .value-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .value-card p {
+        font-size: 0.85rem;
+    }
+
+    /* Contact Form */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .submit-button {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-button {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-button i {
+        font-size: 22px;
+    }
+
+    .nav-links {
+        top: 70px !important; /* Ajustado para a nova altura do header */
+        height: calc(100vh - 70px) !important;
+    }
+
+    .nav-overlay {
+        top: 70px !important;
+        height: calc(100vh - 70px) !important;
+    }
+
+    /* Ajustar margem do hero */
+    .hero {
+        margin-top: 70px !important; /* Ajustado para a nova altura do header */
+    }
+}
+
+/* Fix for very small screens */
+@media (max-width: 360px) {
+    .logo img {
+        height: 65px !important; /* Aumentado de 42px */
+        width: auto !important;
+        margin-left: 0 !important;
+    }
+
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .cta-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .service-card,
+    .value-card,
+    .testimonial-card,
+    .info-item,
+    .contact-form {
+        max-width: 300px;
+    }
+}
+
+/* Animation Classes */
+.nav-active {
+    right: 0;
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes colorShift {
+    0% {
+        background: linear-gradient(45deg, #2ecc71, #27ae60, #1abc9c);
+    }
+    50% {
+        background: linear-gradient(45deg, #1abc9c, #2ecc71, #27ae60);
+    }
+    100% {
+        background: linear-gradient(45deg, #2ecc71, #27ae60, #1abc9c);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* WhatsApp Button */
+.whatsapp-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.whatsapp-button i {
+    font-size: 30px;
+}
+
+.whatsapp-text {
+    position: absolute;
+    right: 70px;
+    background: #25D366;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.whatsapp-button:hover .whatsapp-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsividade do botão WhatsApp */
+@media (max-width: 768px) {
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-button i {
+        font-size: 25px;
+    }
+
+    .whatsapp-text {
+        display: none;
+    }
+}
+
+/* Estilos para a página de Política de Privacidade */
+.privacy-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.privacy-content h1 {
+    color: #1a237e;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.privacy-content section {
+    margin-bottom: 2rem;
+}
+
+.privacy-content h2 {
+    color: #1a237e;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.privacy-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.privacy-content ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-content li {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+/* Values Section */
+.values {
+    padding: 2rem 2rem;
+    background-color: var(--white);
+}
+
+.values h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--dark-color);
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.values h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-2);
+}
+
+.values-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.value-card {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-left-width: 5px;
+    border-left-style: solid;
+    cursor: pointer;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.value-card h3 {
+    display: flex;
+    align-items: flex-start; /* Alinhar ao topo para textos com múltiplas linhas */
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    position: relative;
+    line-height: 1.3;
+}
+
+.value-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-right: 0.8rem;
+    margin-top: 0.2rem; /* Ajuste fino para alinhar com a primeira linha do texto */
+    color: var(--primary-color);
+    min-width: 30px; /* Largura mínima para evitar desalinhamento */
+}
+
+.value-card .value-content {
+    max-height: 500px;
+    opacity: 1;
+    overflow: visible;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .value-card {
+        margin-bottom: 15px !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+        cursor: pointer !important;
+    }
+
+    .value-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .value-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .value-card h3 i {
+        margin-right: 10px !important;
+        color: var(--primary-color) !important;
+        min-width: 20px !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        margin-top: 3px !important; /* Ajuste fino para alinhar com a primeira linha do texto */
+    }
+}
+
+@keyframes pulseCircle {
+    0% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0.15;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.05);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0.15;
+    }
+}
+
+/* Section Base Styles */
+section {
+    padding: var(--section-padding);
+}
+
+.section-title {
+    text-align: center;
+    margin: var(--heading-margin);
+    color: var(--dark-color);
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-2);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Container Base */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Grid Layouts */
+.grid {
+    display: grid;
+    gap: var(--grid-gap);
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+/* Card Base Styles */
+.card {
+    background: var(--white);
+    padding: var(--card-padding);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Typography Adjustments */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Section Specific Adjustments */
+.hero {
+    padding: 0;
+    margin-top: 90px; /* Updated to match the new navbar height */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.services-grid,
+.values-grid,
+.testimonials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--grid-gap);
+}
+
+.about-content,
+.vision-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image,
+.vision-image {
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.about-image img,
+.vision-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.about-image img:hover,
+.vision-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Contact Section */
+.contact-container {
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+}
+
+.contact-info {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    padding: 0.8rem;
+    background: rgba(46, 204, 113, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: rgba(46, 204, 113, 0.1);
+    transform: translateX(5px);
+}
+
+.info-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    opacity: 1;
+    position: absolute;
+    left: 1rem;
+    z-index: 0;
+}
+
+.info-item .info-content {
+    position: relative;
+    z-index: 1;
+    margin-left: 3.5rem;
+}
+
+.info-item h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.2rem;
+    font-size: 1rem;
+}
+
+.info-item p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 3rem 1rem;
+        --heading-margin: 2rem 0;
+        --card-padding: 1.5rem;
+        --grid-gap: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-content,
+    .vision-content,
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image,
+    .vision-image {
+        height: 300px;
+    }
+
+    .services-grid,
+    .values-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .info-item i {
+        font-size: 2rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    :root {
+        --section-padding: 2rem 1rem;
+        --heading-margin: 1.5rem 0;
+        --card-padding: 1.2rem;
+        --grid-gap: 1.2rem;
+        --h1-size: 2rem;
+        --h2-size: 1.6rem;
+        --h3-size: 1.2rem;
+        --text-size: 0.9rem;
+        --small-text: 0.8rem;
+    }
+
+    .section-title {
+        font-size: var(--h2-size);
+    }
+
+    .section-subtitle {
+        font-size: var(--small-text);
+    }
+    
+    /* Hero */
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem;
         padding: 0;
     }
     
@@ -2204,11 +3062,11 @@ footer {
 /* Override específico para garantir que a logo tenha o tamanho correto em mobile */
 @media screen and (max-width: 768px) {
     header nav .logo {
-        height: 100px !important;
+        height: 120px !important;
         width: auto !important;
         position: absolute !important;
         left: 0.8rem !important;
-        top: 0 !important;
+        top: -20px !important; /* Updated to match new navbar height */
         display: flex !important;
         align-items: center !important;
         justify-content: flex-start !important;
@@ -2216,39 +3074,55 @@ footer {
     }
     
     header nav .logo img {
-        height: 100px !important;
+        height: 120px !important;
         width: auto !important;
         max-width: none !important;
         object-fit: contain !important;
         object-position: left center !important;
     }
     
-    /* Ajustar margem do hero para o novo tamanho do header */
+    /* Adjust hero margin for the updated navbar height */
     .hero {
-        margin-top: 150px !important;
+        margin-top: 80px !important; /* Updated to match new navbar height */
     }
     
-    /* Ajustar posição dos elementos do menu */
+    /* Adjust position of menu elements */
     .nav-links {
-        top: 150px !important;
-        height: calc(100vh - 150px) !important;
+        top: 80px !important; /* Updated to match new navbar height */
+        height: calc(100vh - 80px) !important;
     }
     
     .nav-overlay {
-        top: 150px !important;
-        height: calc(100vh - 150px) !important;
+        top: 80px !important; /* Updated to match new navbar height */
+        height: calc(100vh - 80px) !important;
     }
 }
 
 /* Medidas específicas para telas muito pequenas */
 @media screen and (max-width: 480px) {
     header nav .logo {
-        height: 80px !important;
+        height: 100px !important;
         left: 0.5rem !important;
+        top: -15px !important; /* Adjusted for smaller screen */
     }
     
     header nav .logo img {
-        height: 80px !important;
+        height: 100px !important;
+    }
+    
+    /* Adjust for smaller navbar height */
+    .hero {
+        margin-top: 70px !important;
+    }
+    
+    .nav-links {
+        top: 70px !important;
+        height: calc(100vh - 70px) !important;
+    }
+    
+    .nav-overlay {
+        top: 70px !important;
+        height: calc(100vh - 70px) !important;
     }
 }
 
@@ -2395,42 +3269,63 @@ h1, h2, h3, h4, h5, h6,
     }
 }
 
-/* Aplicar alinhamento justificado apenas às seções específicas */
-/* Sobre Nós */
-.about-text p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    hyphens: auto !important;
-    line-height: 1.6 !important;
-}
-
-/* Nossa Visão */
-.vision-text p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    hyphens: auto !important;
-    line-height: 1.6 !important;
-}
-
-/* Cards de Nossos Valores */
-.value-card p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    hyphens: auto !important;
-    line-height: 1.6 !important;
-}
-
-/* O que nossos clientes dizem */
-.testimonial-content p {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-    hyphens: auto !important;
-    line-height: 1.6 !important;
-}
-
-/* Ajuste para dispositivos móveis - manter melhor leitura */
-@media (max-width: 480px) {
+/* Card text organization for desktop view */
+@media (min-width: 769px) {
+    /* Service cards text organization */
+    .service-card p {
+        text-align: justify;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        font-size: 0.9rem;
+    }
+    
+    .service-features li {
+        text-align: left;
+        margin-bottom: 0.8rem;
+    }
+    
+    /* Values cards text organization */
+    .value-card p {
+        text-align: justify;
+        line-height: 1.6;
+        font-size: 0.85rem;
+    }
+    
+    /* Testimonial cards text organization */
     .testimonial-content p {
-        text-align: justify !important;
+        text-align: justify;
+        line-height: 1.5;
+        font-size: 0.9rem;
+        font-style: italic;
+    }
+}
+
+/* Service subtitles centering on mobile */
+@media (max-width: 768px) {
+    .service-card h3,
+    .service-header {
+        text-align: center !important;
+        justify-content: center;
+        padding-right: 10px !important;
+    }
+    
+    /* Add space for the arrow */
+    .service-header:after {
+        position: absolute !important;
+        right: 15px !important;
+    }
+    
+    /* Improve testimonial readability on mobile */
+    .testimonial-content p {
+        text-align: center;
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    /* Ensure values card titles are properly visible */
+    .value-card h3 {
+        white-space: normal !important;
+        overflow: visible !important;
+        padding-right: 40px !important;
     }
 }

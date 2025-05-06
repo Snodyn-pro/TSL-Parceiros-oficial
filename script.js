@@ -322,12 +322,13 @@ function initializeMobileFeatures() {
         if (header) {
             console.log("Adicionando listener ao serviço", index + 1);
             
-            // Estilizar o header para a seta no extremo direito
+            // Estilizar o header para a seta no extremo direito e centralizar texto
             header.style.position = 'relative';
             header.style.paddingRight = '40px';
-            header.style.textOverflow = 'ellipsis';
-            header.style.whiteSpace = 'nowrap';
-            header.style.overflow = 'hidden';
+            header.style.textAlign = 'center';
+            header.style.justifyContent = 'center';
+            header.style.display = 'flex';
+            header.style.alignItems = 'center';
             
             // Remover todos os event listeners existentes
             const headerClone = header.cloneNode(true);
@@ -359,6 +360,12 @@ function initializeMobileFeatures() {
                 // Forçar reflow para animar
                 card.offsetHeight;
             });
+        }
+        
+        // Organize service card text
+        const serviceContent = card.querySelector('.service-content p');
+        if (serviceContent) {
+            serviceContent.style.textAlign = 'justify';
         }
     });
 
@@ -413,6 +420,21 @@ function initializeMobileFeatures() {
                 card.offsetHeight;
             });
         }
+        
+        // Organize value card text
+        const valueContent = card.querySelector('.value-content p');
+        if (valueContent) {
+            valueContent.style.textAlign = 'justify';
+        }
+    });
+
+    // Adicionar suporte para texto justificado em depoimentos
+    document.querySelectorAll('.testimonial-content p').forEach(content => {
+        if (window.innerWidth <= 768) {
+            content.style.textAlign = 'center';
+        } else {
+            content.style.textAlign = 'justify';
+        }
     });
 
     // Vision Section Toggle (Mobile Only)
@@ -435,6 +457,7 @@ function initializeMobileFeatures() {
             visionParagraph.style.maxHeight = 'none';
             visionParagraph.style.opacity = '1';
             visionParagraph.style.overflow = 'visible';
+            visionParagraph.style.textAlign = 'justify';
         }
     }
 }
@@ -549,18 +572,27 @@ window.addEventListener('load', function() {
         document.querySelectorAll('.service-header').forEach(header => {
             header.style.position = 'relative';
             header.style.paddingRight = '40px';
-            header.style.textOverflow = 'ellipsis';
-            header.style.whiteSpace = 'nowrap';
-            header.style.overflow = 'hidden';
+            header.style.textAlign = 'center';
+            header.style.justifyContent = 'center';
+            header.style.display = 'flex';
+            header.style.alignItems = 'center';
+        });
+        
+        // Centralize os subtítulos na seção Nossos Serviços
+        document.querySelectorAll('.service-card h3').forEach(subtitle => {
+            subtitle.style.textAlign = 'center';
+            subtitle.style.justifyContent = 'center';
+            subtitle.style.display = 'block';
+            subtitle.style.paddingRight = '30px'; // Espaço para a seta
         });
         
         // Ajustar espaçamento nos headers de valores para acomodar a seta
         document.querySelectorAll('.value-card h3').forEach(header => {
             header.style.position = 'relative';
             header.style.paddingRight = '40px';
-            header.style.textOverflow = 'ellipsis';
-            header.style.whiteSpace = 'nowrap';
-            header.style.overflow = 'hidden';
+            header.style.whiteSpace = 'normal';
+            header.style.overflow = 'visible';
+            header.style.textOverflow = 'clip';
         });
         
         // Configurar visão para sempre visível
@@ -576,7 +608,18 @@ window.addEventListener('load', function() {
             visionParagraph.style.maxHeight = 'none';
             visionParagraph.style.opacity = '1';
             visionParagraph.style.overflow = 'visible';
+            visionParagraph.style.textAlign = 'justify';
         }
+        
+        // Centralizar textos dos depoimentos em mobile
+        document.querySelectorAll('.testimonial-content p').forEach(content => {
+            content.style.textAlign = 'center';
+        });
+    } else {
+        // Justificar textos em desktop
+        document.querySelectorAll('.service-card p, .value-card p, .testimonial-content p, .vision-text p').forEach(content => {
+            content.style.textAlign = 'justify';
+        });
     }
 });
 
@@ -593,13 +636,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth <= 768) {
             const logoContainer = document.querySelector('.logo');
             if (logoContainer) {
-                logoContainer.style.height = '110px';
-                logoContainer.style.top = '-25px';
+                logoContainer.style.height = '120px';
+                logoContainer.style.top = '-20px';
             }
             
             // Ajustar tamanho para telas muito pequenas
             if (window.innerWidth <= 480) {
-                logo.style.height = '110px';
+                logo.style.height = '100px';
+                
+                if (logoContainer) {
+                    logoContainer.style.height = '100px';
+                    logoContainer.style.top = '-15px';
+                }
             } else {
                 logo.style.height = '120px';
             }
@@ -609,7 +657,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const logoContainer = document.querySelector('.logo');
             if (logoContainer) {
-                logoContainer.style.height = '125px';
+                logoContainer.style.height = '150px';
                 logoContainer.style.top = '-25px';
             }
         }
@@ -620,4 +668,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // E também quando a janela é redimensionada
     window.addEventListener('resize', adjustLogo);
+});
+
+// Add window resize handler for text alignment
+window.addEventListener('resize', function() {
+    // Update text alignment based on current screen size
+    if (window.innerWidth <= 768) {
+        // Mobile - center service subtitles and testimonials
+        document.querySelectorAll('.service-header, .service-card h3').forEach(header => {
+            header.style.textAlign = 'center';
+            header.style.justifyContent = 'center';
+        });
+        
+        document.querySelectorAll('.testimonial-content p').forEach(content => {
+            content.style.textAlign = 'center';
+        });
+    } else {
+        // Desktop - justify all card text contents
+        document.querySelectorAll('.service-card p, .value-card p, .testimonial-content p, .vision-text p').forEach(content => {
+            content.style.textAlign = 'justify';
+        });
+        
+        // Make sure service feature lists stay left-aligned
+        document.querySelectorAll('.service-features li').forEach(item => {
+            item.style.textAlign = 'left';
+        });
+    }
 });
