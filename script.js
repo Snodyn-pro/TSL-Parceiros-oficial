@@ -695,3 +695,44 @@ window.addEventListener('resize', function() {
         });
     }
 });
+
+// Newsletter Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            
+            // Here you would typically send this data to your backend
+            console.log('Newsletter subscription:', {
+                name: nameInput.value,
+                email: emailInput.value
+            });
+            
+            // Clear the form
+            newsletterForm.reset();
+            
+            // Show success message
+            alert('Obrigado por subscrever nossa newsletter!');
+        });
+    }
+
+    // FAQ Toggle Functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            // Close other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active');
+        });
+    });
+});
