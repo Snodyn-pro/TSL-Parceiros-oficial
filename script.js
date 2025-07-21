@@ -95,19 +95,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Form Submission
-const contactForm = document.getElementById('contact-form');
+const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        // Get form data
         const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to your server
-        // For now, we'll just show a success message
-        alert('Mensagem enviada com sucesso! Entraremos em contacto em breve.');
-        this.reset();
+        const data = Object.fromEntries(formData.entries());
+        try {
+            const resp = await fetch('/api/contacto', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await resp.json();
+            if (!result.ok) throw new Error(result.message || 'Erro ao enviar.');
+            alert('Mensagem enviada com sucesso! Entraremos em contacto em breve.');
+            this.reset();
+        } catch (err) {
+            alert('Erro ao enviar a mensagem. Por favor, tente novamente.');
+        }
     });
 }
 
@@ -716,22 +722,23 @@ window.addEventListener('resize', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
+        newsletterForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            
-            // Here you would typically send this data to your backend
-            console.log('Newsletter subscription:', {
-                name: nameInput.value,
-                email: emailInput.value
-            });
-            
-            // Clear the form
-            newsletterForm.reset();
-            
-            // Show success message
-            alert('Obrigado por subscrever a nossa newsletter!');
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            try {
+                const resp = await fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await resp.json();
+                if (!result.ok) throw new Error(result.message || 'Erro ao enviar.');
+                alert('Obrigado por subscrever a nossa newsletter!');
+                this.reset();
+            } catch (err) {
+                alert('Erro ao enviar a inscrição. Por favor, tente novamente.');
+            }
         });
     }
 
@@ -1001,7 +1008,7 @@ function renderRastreamentoStep() {
     submit.type = 'button';
     submit.className = 'submit-btn';
     submit.textContent = dict['rastreamento-btn-submit'] || 'Submeter';
-    submit.onclick = () => {
+    submit.onclick = async () => {
       // Salvar último valor
       const lastStep = rastreamentoSteps[rastreamentoStep];
       if (lastStep.field) {
@@ -1012,13 +1019,25 @@ function renderRastreamentoStep() {
           rastreamentoData[lastStep.field.name] = rastreamentoStepper.querySelector('input').value;
         }
       }
-      rastreamentoModal.style.display = 'none';
-      document.body.style.overflow = '';
-      rastreamentoStep = 0;
-      rastreamentoData = {};
-      renderRastreamentoStep();
-      updateProgressBar();
-      rastreamentoPopup.style.display = 'flex';
+      // Enviar para o backend
+      try {
+        const resp = await fetch('/api/inquerito', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(rastreamentoData)
+        });
+        const result = await resp.json();
+        if (!result.ok) throw new Error(result.message || 'Erro ao enviar.');
+        rastreamentoModal.style.display = 'none';
+        document.body.style.overflow = '';
+        rastreamentoStep = 0;
+        rastreamentoData = {};
+        renderRastreamentoStep();
+        updateProgressBar();
+        rastreamentoPopup.style.display = 'flex';
+      } catch (err) {
+        alert('Erro ao enviar o inquérito. Por favor, tente novamente.');
+      }
     };
     btns.appendChild(submit);
   }
@@ -1213,11 +1232,11 @@ const translations = {
     'servico-sustentabilidade-2': 'Development and implementation of ESG strategies',
     'servico-sustentabilidade-3': 'Preparation of sustainability reports according to international standards (GRI, ABNT PR 2030-ESG)',
     'valor-sabedoria-title': 'Wisdom with Purpose',
-    'valor-sabedoria-desc': 'We combine ancient wisdom such as King Solomon’s principles, professional experience and academic training for strategic decisions with purpose, integrity, high performance and sustainable growth.',
+    'valor-sabedoria-desc': "We combine ancient wisdom such as King Solomon's principles, professional experience and academic training for strategic decisions with purpose, integrity, high performance and sustainable growth.",
     'valor-parceria-title': 'Partnership that Transforms',
-    'valor-parceria-desc': 'We walk hand in hand with our clients, with real proximity and genuine commitment to their results. We are trusted partners who believe in the power of human relationships to generate lasting transformation.',
+    'valor-parceria-desc': "We walk hand in hand with our clients, with real proximity and genuine commitment to their results. We are trusted partners who believe in the power of human relationships to generate lasting transformation.",
     'valor-conhecimento-title': 'Knowledge in Motion',
-    'valor-conhecimento-desc': 'We turn knowledge into action, with practical, simple and accessible solutions. We communicate clearly, speak our clients’ language and deliver tools that make a difference in everyday life.',
+    'valor-conhecimento-desc': "We turn knowledge into action, with practical, simple and accessible solutions. We communicate clearly, speak our clients' language and deliver tools that make a difference in everyday life.",
     'valor-crescimento-title': 'Sustainable Growth',
     'valor-crescimento-desc': 'We work so that each client evolves in a structured and lasting way. We want more than quick success — we seek intelligent, responsible growth aligned with the future they want to build.',
     'valor-impacto-title': 'Impact with Value',
@@ -1243,7 +1262,7 @@ const translations = {
     'hero-crescimento': 'Growth',
     'hero-impacto': 'Impact',
     'sobre-missao': 'TSL Partners aims to promote the financial transformation of individuals and companies through integrated consulting, financial education, and strategic restructuring solutions. We focus on empowerment, sustainability, and growth, supporting our clients in building solid foundations for effective and lasting decisions.',
-    'sobre-experiencia': 'We combine experience in financial management, technical rigor, and guiding principles inspired by high performance, sports discipline, and biblical wisdom to generate real and measurable impact. Our approach is personalized, practical, and results-oriented, ensuring close and trustworthy support throughout our partners’ development cycle.',
+    'sobre-experiencia': "We combine experience in financial management, technical rigor, and guiding principles inspired by high performance, sports discipline, and biblical wisdom to generate real and measurable impact. Our approach is personalized, practical, and results-oriented, ensuring close and trustworthy support throughout our partners' development cycle.",
     'sobre-parceiros': 'We are more than consultants: we are journey partners who believe that every person and every business has the potential to become a reference with a solid foundation, a winning mindset, and healthy finances.',
     'feature-metodologia': 'Proven Methodology',
     'feature-equipa': 'Specialized Team',

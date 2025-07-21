@@ -1,63 +1,126 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
+const nodemailer = require('nodemailer');
 const path = require('path');
+const fs = require('fs');
+const app = express();
 
-const server = http.createServer((req, res) => {
-    let filePath = '.' + req.url;
-    console.log('Requested file:', filePath);
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true }));
 
-    if (filePath === './') {
-        filePath = './index.html';
+// Servir arquivos estáticos
+app.use(express.static(__dirname));
+
+// Rota para envio do inquérito
+app.post('/api/inquerito', async (req, res) => {
+  const data = req.body;
+  // Montar corpo do e-mail
+  let html = '<h2>Dados do Inquérito</h2><ul>';
+  for (const key in data) {
+    html += `<li><b>${key}:</b> ${Array.isArray(data[key]) ? data[key].join(', ') : data[key]}</li>`;
+  }
+  html += '</ul>';
+
+  // Configurar Nodemailer
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.hostinger.com',
+    port: 465,
+    secure: true, // SSL
+    auth: {
+      user: 'contacto@tslparceiros.pt',
+      pass: 'Tslparceiros@2025'
+    },
+    tls: {
+      rejectUnauthorized: false
     }
+  });
 
-    if (!fs.existsSync(filePath)) {
-        console.log('File does not exist:', filePath);
-        res.writeHead(404);
-        res.end('File not found');
-        return;
+  try {
+    await transporter.sendMail({
+      from: 'TSL Parceiros <contacto@tslparceiros.pt>',
+      to: 'contacto@tslparceiros.pt',
+      subject: 'Novo Inquérito Recebido',
+      html
+    });
+    res.json({ ok: true, message: 'Inquérito enviado com sucesso!' });
+  } catch (err) {
+    console.error('Erro ao enviar e-mail:', err);
+    res.status(500).json({ ok: false, message: 'Erro ao enviar e-mail.' });
+  }
+});
+
+// Rota para envio do formulário de contacto
+app.post('/api/contacto', async (req, res) => {
+  const data = req.body;
+  let html = '<h2>Mensagem de Contacto</h2><ul>';
+  for (const key in data) {
+    html += `<li><b>${key}:</b> ${Array.isArray(data[key]) ? data[key].join(', ') : data[key]}</li>`;
+  }
+  html += '</ul>';
+
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.hostinger.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'contacto@tslparceiros.pt',
+      pass: 'Tslparceiros@2025'
+    },
+    tls: {
+      rejectUnauthorized: false
     }
+  });
 
-    const extname = path.extname(filePath);
-    console.log('File extension:', extname);
+  try {
+    await transporter.sendMail({
+      from: 'TSL Parceiros <contacto@tslparceiros.pt>',
+      to: 'contacto@tslparceiros.pt',
+      subject: 'Novo Contacto Recebido',
+      html
+    });
+    res.json({ ok: true, message: 'Mensagem enviada com sucesso!' });
+  } catch (err) {
+    console.error('Erro ao enviar e-mail:', err);
+    res.status(500).json({ ok: false, message: 'Erro ao enviar e-mail.' });
+  }
+});
 
-    let contentType = 'text/html';
-    switch (extname) {
-        case '.js':
-            contentType = 'text/javascript';
-            break;
-        case '.css':
-            contentType = 'text/css';
-            break;
-        case '.png':
-            contentType = 'image/png';
-            break;
-        case '.jpg':
-        case '.jpeg':
-            contentType = 'image/jpeg';
-            break;
-        case '.gif':
-            contentType = 'image/gif';
-            break;
-        case '.svg':
-            contentType = 'image/svg+xml';
-            break;
+// Rota para envio da newsletter
+app.post('/api/newsletter', async (req, res) => {
+  const data = req.body;
+  let html = '<h2>Nova inscrição na Newsletter</h2><ul>';
+  for (const key in data) {
+    html += `<li><b>${key}:</b> ${Array.isArray(data[key]) ? data[key].join(', ') : data[key]}</li>`;
+  }
+  html += '</ul>';
+
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.hostinger.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'contacto@tslparceiros.pt',
+      pass: 'Tslparceiros@2025'
+    },
+    tls: {
+      rejectUnauthorized: false
     }
+  });
 
-    console.log('Content-Type:', contentType);
-
-    try {
-        const content = fs.readFileSync(filePath);
-        console.log('File read successfully:', filePath);
-        res.writeHead(200, { 'Content-Type': contentType });
-        res.end(content);
-    } catch (error) {
-        console.log('Error reading file:', error);
-        res.writeHead(500);
-        res.end('Server error: ' + error.message);
-    }
+  try {
+    await transporter.sendMail({
+      from: 'TSL Parceiros <contacto@tslparceiros.pt>',
+      to: 'contacto@tslparceiros.pt',
+      subject: 'Nova inscrição na newsletter',
+      html
+    });
+    res.json({ ok: true, message: 'Inscrição enviada com sucesso!' });
+  } catch (err) {
+    console.error('Erro ao enviar e-mail:', err);
+    res.status(500).json({ ok: false, message: 'Erro ao enviar e-mail.' });
+  }
 });
 
 const PORT = 3000;
-server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}/`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`);
 }); 
