@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TSL Parceiros</title>
+    <title data-i18n="site-title">TSL Parceiros</title>
+    <meta name="description" content="Consultoria, educação financeira e soluções para empresas e indivíduos." data-i18n="meta-description">
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="logo_2.png">
     <link rel="icon" type="image/png" sizes="16x16" href="logo_2.png">
@@ -17,23 +18,28 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav style="display: flex; align-items: center; justify-content: space-between; position: relative;">
             <div class="logo">
                 <a href="#inicio">
                     <img src="logo.png" alt="TSL Parceiros Logo" class="logo-img" style="height: 140px; width: auto; max-width: none; display: block; object-fit: contain;">
                 </a>
             </div>
-            <ul class="nav-links">
-                <li style="--i:1"><a href="#inicio">Início</a></li>
-                <li style="--i:2"><a href="#servicos">Serviços</a></li>
-                <li style="--i:3"><a href="#sobre">Sobre</a></li>
-                <li style="--i:4"><a href="#visao">Visão</a></li>
-                <li style="--i:5"><a href="#valores">Valores</a></li>
-                <li style="--i:6"><a href="#contacto">Contacto</a></li>
-                <li style="--i:7"><a href="#faq">FAQ</a></li>
-                <li style="--i:8"><a href="#newsletter">Newsletter</a></li>
+            <ul class="nav-links" style="display: flex; align-items: center; margin: 0; padding: 0;">
+                <li style="--i:1"><a href="#inicio" data-i18n="nav-inicio">Início</a></li>
+                <li style="--i:2"><a href="#servicos" data-i18n="nav-servicos">Serviços</a></li>
+                <li style="--i:3"><a href="#sobre" data-i18n="nav-sobre">Sobre</a></li>
+                <li style="--i:4"><a href="#visao" data-i18n="nav-visao">Visão</a></li>
+                <li style="--i:5"><a href="#valores" data-i18n="nav-valores">Valores</a></li>
+                <li style="--i:6"><a href="#contacto" data-i18n="nav-contacto">Contacto</a></li>
+                <li style="--i:7"><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
+                <li style="--i:8"><a href="#newsletter" data-i18n="nav-newsletter">Newsletter</a></li>
             </ul>
-            <div class="burger">
+            <div id="language-selector" style="display: flex; gap: 0.7rem; align-items: center; position: static; margin-left: 1.5rem;">
+                <img src="https://flagcdn.com/24x18/pt.png" alt="Português" title="Português" data-lang="pt" style="cursor:pointer; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+                <img src="https://flagcdn.com/24x18/gb.png" alt="English" title="English" data-lang="en" style="cursor:pointer; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+                <img src="https://flagcdn.com/24x18/de.png" alt="Deutsch" title="Deutsch" data-lang="de" style="cursor:pointer; border-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+            </div>
+            <div class="burger" aria-label="Menu" data-i18n="burger-menu-label">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -48,105 +54,105 @@
                 <img src="banner-consultoria.png.png" alt="Banner TSL Parceiros">
             </div>
             <div class="hero-content">
-                <h1>Transformando vidas e negócios</h1>
-                <p class="hero-subtitle">De mãos dadas com o seu crescimento rumo ao sucesso sustentável</p>
+                <h1 data-i18n="hero-title">A transformar vidas e negócios</h1>
+                <p class="hero-subtitle" data-i18n="hero-subtitle">De mãos dadas com o seu crescimento rumo ao sucesso sustentável</p>
                 <div class="hero-services">
                     <div class="service-icon">
                         <i class="fas fa-lightbulb" style="font-size: 2.5rem; color: #FFD700;"></i>
-                        <span style="color: #FFD700; display: block; margin-top: 0.5rem;">Sabedoria</span>
+                        <span style="color: #FFD700; display: block; margin-top: 0.5rem;" data-i18n="hero-sabedoria">Sabedoria</span>
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-handshake" style="font-size: 2.5rem; color: #90EE90;"></i>
-                        <span style="color: #90EE90; display: block; margin-top: 0.5rem;">Parceria</span>
+                        <span style="color: #90EE90; display: block; margin-top: 0.5rem;" data-i18n="hero-parceria">Parceria</span>
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-book-reader" style="font-size: 2.5rem; color: #87CEEB;"></i>
-                        <span style="color: #87CEEB; display: block; margin-top: 0.5rem;">Conhecimento</span>
+                        <span style="color: #87CEEB; display: block; margin-top: 0.5rem;" data-i18n="hero-conhecimento">Conhecimento</span>
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-chart-line" style="font-size: 2.5rem; color: #FF6B6B;"></i>
-                        <span style="color: #FF6B6B; display: block; margin-top: 0.5rem;">Crescimento</span>
+                        <span style="color: #FF6B6B; display: block; margin-top: 0.5rem;" data-i18n="hero-crescimento">Crescimento</span>
                     </div>
                     <div class="service-icon">
                         <i class="fas fa-heart" style="font-size: 2.5rem; color: #FFA500;"></i>
-                        <span style="color: #FFA500; display: block; margin-top: 0.5rem;">Impacto</span>
+                        <span style="color: #FFA500; display: block; margin-top: 0.5rem;" data-i18n="hero-impacto">Impacto</span>
                     </div>
                 </div>
-                <a href="#contacto" class="cta-button">Inicie a Sua Transformação</a>
+                <a href="#" class="cta-button" id="start-journey-btn" data-i18n="cta-transformacao">Inicie a Sua Transformação</a>
             </div>
         </section>
 
         <section id="servicos" class="services">
-            <h2>Os Nossos Serviços</h2>
+            <h2 data-i18n="servicos-title">Os Nossos Serviços</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-header">
                         <i class="fas fa-briefcase"></i>
-                        <h3>Negócio</h3>
+                        <h3 data-i18n="servico-negocio-title">Negócio</h3>
                     </div>
                     <div class="service-content">
                         <ul class="service-features">
-                            <li>Desenvolvimento de ideias e modelos de negócio</li>
-                            <li>Abertura de empresas</li>
-                            <li>Estratégia de crescimento e investimento</li>
+                            <li data-i18n="servico-negocio-1">Desenvolvimento de ideias e modelos de negócio</li>
+                            <li data-i18n="servico-negocio-2">Abertura de empresas</li>
+                            <li data-i18n="servico-negocio-3">Estratégia de crescimento e investimento</li>
                         </ul>
-                        <a href="#contacto" class="service-cta">Contate-nos</a>
+                        <a href="#contacto" class="service-cta" data-i18n="service-cta">Contacte-nos</a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-header">
                         <i class="fas fa-calculator"></i>
-                        <h3>Finanças e Contabilidade</h3>
+                        <h3 data-i18n="servico-financas-title">Finanças e Contabilidade</h3>
                     </div>
                     <div class="service-content">
                         <ul class="service-features">
-                            <li>Contabilidade e fiscalidade</li>
-                            <li>Consultoria financeira e controlo de gestão</li>
-                            <li>Finanças e investimentos pessoais e empresariais</li>
+                            <li data-i18n="servico-financas-1">Contabilidade e fiscalidade</li>
+                            <li data-i18n="servico-financas-2">Consultoria financeira e controlo de gestão</li>
+                            <li data-i18n="servico-financas-3">Finanças e investimentos pessoais e empresariais</li>
                         </ul>
-                        <a href="#contacto" class="service-cta">Contate-nos</a>
+                        <a href="#contacto" class="service-cta" data-i18n="service-cta">Contacte-nos</a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-header">
                         <i class="fas fa-bullhorn"></i>
-                        <h3>Marketing e Imagem</h3>
+                        <h3 data-i18n="servico-marketing-title">Marketing e Imagem</h3>
                     </div>
                     <div class="service-content">
                         <ul class="service-features">
-                            <li>Plano e estratégia de marketing</li>
-                            <li>Marketing digital e branding</li>
-                            <li>Gestão de redes sociais</li>
+                            <li data-i18n="servico-marketing-1">Plano e estratégia de marketing</li>
+                            <li data-i18n="servico-marketing-2">Marketing digital e branding</li>
+                            <li data-i18n="servico-marketing-3">Gestão de redes sociais</li>
                         </ul>
-                        <a href="#contacto" class="service-cta">Contate-nos</a>
+                        <a href="#contacto" class="service-cta" data-i18n="service-cta">Contacte-nos</a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-header">
                         <i class="fas fa-cogs"></i>
-                        <h3>Operações e Processos</h3>
+                        <h3 data-i18n="servico-operacoes-title">Operações e Processos</h3>
                     </div>
                     <div class="service-content">
                         <ul class="service-features">
-                            <li>Mapeamento e optimização de processos</li>
-                            <li>Gestão da qualidade e implementação de sistemas</li>
-                            <li>Gestão de projetos e melhoria contínua</li>
+                            <li data-i18n="servico-operacoes-1">Mapeamento e optimização de processos</li>
+                            <li data-i18n="servico-operacoes-2">Gestão da qualidade e implementação de sistemas</li>
+                            <li data-i18n="servico-operacoes-3">Gestão de projetos e melhoria contínua</li>
                         </ul>
-                        <a href="#contacto" class="service-cta">Contate-nos</a>
+                        <a href="#contacto" class="service-cta" data-i18n="service-cta">Contacte-nos</a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-header">
                         <i class="fas fa-leaf"></i>
-                        <h3>Sustentabilidade e ESG</h3>
+                        <h3 data-i18n="servico-sustentabilidade-title">Sustentabilidade e ESG</h3>
                     </div>
                     <div class="service-content">
                         <ul class="service-features">
-                            <li>Diagnóstico ESG e matriz de materialidade</li>
-                            <li>Desenvolvimento e implementação de estratégias ESG</li>
-                            <li>Elaboração de relatórios de sustentabilidade segundo padrões internacionais (GRI, ABNT PR 2030-ESG)</li>
+                            <li data-i18n="servico-sustentabilidade-1">Diagnóstico ESG e matriz de materialidade</li>
+                            <li data-i18n="servico-sustentabilidade-2">Desenvolvimento e implementação de estratégias ESG</li>
+                            <li data-i18n="servico-sustentabilidade-3">Elaboração de relatórios de sustentabilidade segundo padrões internacionais (GRI, ABNT PR 2030-ESG)</li>
                         </ul>
-                        <a href="#contacto" class="service-cta">Contate-nos</a>
+                        <a href="#contacto" class="service-cta" data-i18n="service-cta">Contacte-nos</a>
                     </div>
                 </div>
             </div>
@@ -155,22 +161,22 @@
         <section id="sobre" class="about">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Sobre Nós</h2>
-                    <p>A TSL Parceiros tem como missão promover a transformação financeira de indivíduos e empresas, através de soluções integradas de consultoria, educação financeira e reestruturação estratégica. Atuamos com foco na capacitação, sustentabilidade e crescimento, apoiando os nossos clientes na construção de bases sólidas para decisões eficazes e duradouras.</p>
-                    <p>Combinamos experiência em gestão financeira, rigor técnico e princípios orientadores inspirados na alta performance, disciplina desportiva e sabedoria bíblica, para gerar impacto real e mensurável. A nossa abordagem é personalizada, prática e orientada para resultados, assegurando um acompanhamento de proximidade e confiança ao longo de todo o ciclo de desenvolvimento dos nossos parceiros.</p>
-                    <p>Somos mais do que consultores: somos parceiros de jornada, que acreditam que cada pessoa e cada negócio tem potencial para se tornar uma referência com base sólida, mentalidade vencedora e finanças saudáveis.</p>
+                    <h2 data-i18n="sobre-title">Sobre Nós</h2>
+                    <p data-i18n="sobre-missao">A TSL Parceiros tem como missão promover a transformação financeira de indivíduos e empresas, através de soluções integradas de consultoria, educação financeira e reestruturação estratégica. Atuamos com foco na capacitação, sustentabilidade e crescimento, apoiando os nossos clientes na construção de bases sólidas para decisões eficazes e duradouras.</p>
+                    <p data-i18n="sobre-experiencia">Combinamos experiência em gestão financeira, rigor técnico e princípios orientadores inspirados na alta performance, disciplina desportiva e sabedoria bíblica, para gerar impacto real e mensurável. A nossa abordagem é personalizada, prática e orientada para resultados, assegurando um acompanhamento de proximidade e confiança ao longo de todo o ciclo de desenvolvimento dos nossos parceiros.</p>
+                    <p data-i18n="sobre-parceiros">Somos mais do que consultores: somos parceiros de jornada, que acreditam que cada pessoa e cada negócio tem potencial para se tornar uma referência com base sólida, mentalidade vencedora e finanças saudáveis.</p>
                     <div class="about-features">
                         <div class="feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Metodologia Comprovada</span>
+                            <span data-i18n="feature-metodologia">Metodologia Comprovada</span>
                         </div>
                         <div class="feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Equipe Especializada</span>
+                            <span data-i18n="feature-equipa">Equipa Especializada</span>
                         </div>
                         <div class="feature">
                             <i class="fas fa-check-circle"></i>
-                            <span>Resultados Garantidos</span>
+                            <span data-i18n="feature-resultados">Resultados Garantidos</span>
                         </div>
                     </div>
                 </div>
@@ -186,24 +192,24 @@
                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Visão TSL Parceiros">
                 </div>
                 <div class="vision-text">
-                    <h2>A Nossa Visão</h2>
-                    <p>Ser, até 2030, a referência global em consultoria para indivíduos e empresas, reconhecida pela capacidade de transformar realidades financeiras com proximidade, rigor e propósito. Ambicionamos acelerar o crescimento sustentável de quem começa pequeno, através de soluções criativas, personalizadas e ancoradas em valores sólidos, promovendo impacto económico, social e espiritual duradouro.</p>
+                    <h2 data-i18n="visao-title">A Nossa Visão</h2>
+                    <p data-i18n="visao-desc">Ser, até 2030, a referência global em consultoria para indivíduos e empresas, reconhecida pela capacidade de transformar realidades financeiras com proximidade, rigor e propósito. Ambicionamos acelerar o crescimento sustentável de quem começa pequeno, através de soluções criativas, personalizadas e ancoradas em valores sólidos, promovendo impacto económico, social e espiritual duradouro.</p>
                 </div>
             </div>
         </section>
 
         <section id="valores" class="values">
-            <h2>Os Nossos Valores</h2>
+            <h2 data-i18n="valores-title">Os Nossos Valores</h2>
             <div class="values-grid">
                 <div class="value-card" style="border-left: 5px solid #FFD700;">
                     <h3>
                         <div class="value-icon">
                             <i class="fas fa-lightbulb"></i>
                         </div>
-                        Sabedoria com Propósito
+                        <span class="value-title-text" data-i18n="valor-sabedoria-title">Sabedoria com Propósito</span>
                     </h3>
                     <div class="value-content">
-                        <p>Unimos sabedoria antiga como os princípios do Rei Salomão, experiência profissional e formação académica para decisões estratégicas com propósito, integridade, alta performance e crescimento sustentável.</p>
+                        <p data-i18n="valor-sabedoria-desc">Unimos sabedoria antiga como os princípios do Rei Salomão, experiência profissional e formação académica para decisões estratégicas com propósito, integridade, alta performance e crescimento sustentável.</p>
                     </div>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #90EE90;">
@@ -211,10 +217,10 @@
                         <div class="value-icon">
                             <i class="fas fa-handshake"></i>
                         </div>
-                        Parceria que Transforma
+                        <span class="value-title-text" data-i18n="valor-parceria-title">Parceria que Transforma</span>
                     </h3>
                     <div class="value-content">
-                        <p>Caminhamos de mãos dadas com os nossos clientes, com proximidade real e compromisso genuíno com os seus resultados. Somos parceiros de confiança que acreditam no poder da relação humana para gerar transformação duradoura.</p>
+                        <p data-i18n="valor-parceria-desc">Caminhamos de mãos dadas com os nossos clientes, com proximidade real e compromisso genuíno com os seus resultados. Somos parceiros de confiança que acreditam no poder da relação humana para gerar transformação duradoura.</p>
                     </div>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #87CEEB;">
@@ -222,10 +228,10 @@
                         <div class="value-icon">
                             <i class="fas fa-book-reader"></i>
                         </div>
-                        Conhecimento em Movimento
+                        <span class="value-title-text" data-i18n="valor-conhecimento-title">Conhecimento em Movimento</span>
                     </h3>
                     <div class="value-content">
-                        <p>Transformamos conhecimento em ação, com soluções práticas, simples e acessíveis. Comunicamos com clareza, falamos a linguagem dos nossos clientes e entregamos ferramentas que fazem diferença no dia a dia.</p>
+                        <p data-i18n="valor-conhecimento-desc">Transformamos conhecimento em ação, com soluções práticas, simples e acessíveis. Comunicamos com clareza, falamos a linguagem dos nossos clientes e entregamos ferramentas que fazem diferença no dia a dia.</p>
                     </div>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #FF6B6B;">
@@ -233,10 +239,10 @@
                         <div class="value-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        Crescimento Sustentável
+                        <span class="value-title-text" data-i18n="valor-crescimento-title">Crescimento Sustentável</span>
                     </h3>
                     <div class="value-content">
-                        <p>Trabalhamos para que cada cliente evolua de forma estruturada e duradoura. Queremos mais do que sucesso rápido — buscamos crescimento inteligente, responsável e alinhado com o futuro que desejam construir.</p>
+                        <p data-i18n="valor-crescimento-desc">Trabalhamos para que cada cliente evolua de forma estruturada e duradoura. Queremos mais do que sucesso rápido — buscamos crescimento inteligente, responsável e alinhado com o futuro que desejam construir.</p>
                     </div>
                 </div>
                 <div class="value-card" style="border-left: 5px solid #FFA500;">
@@ -244,107 +250,107 @@
                         <div class="value-icon">
                             <i class="fas fa-heart"></i>
                         </div>
-                        Impacto com Valor
+                        <span class="value-title-text" data-i18n="valor-impacto-title">Impacto com Valor</span>
                     </h3>
                     <div class="value-content">
-                        <p>Acreditamos na força da transformação económica e social. Cada ação nossa é orientada para gerar valor real: nos negócios, nas famílias e na sociedade. O nosso sucesso é medido pelo impacto positivo que deixamos juntos.</p>
+                        <p data-i18n="valor-impacto-desc">Acreditamos na força da transformação económica e social. Cada ação nossa é orientada para gerar valor real: nos negócios, nas famílias e na sociedade. O nosso sucesso é medido pelo impacto positivo que deixamos juntos.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="contacto" class="contact">
-            <h2>Contacte-nos</h2>
+            <h2 data-i18n="contacto-title">Contacte-nos</h2>
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="info-content">
-                            <h3>Morada</h3>
-                            <p>Rua Mira Fernandes 170F loja F,<br>2910-430 Setúbal, Portugal</p>
+                            <h3 data-i18n="contacto-morada">Morada</h3>
+                            <p data-i18n="contacto-morada-desc">Rua Bocage 67, CP 2900-277, Setúbal</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div class="info-content">
-                            <h3>Telemóvel</h3>
-                            <p>+351 933137935</p>
+                            <h3 data-i18n="contacto-telefone">Telemóvel</h3>
+                            <p data-i18n="contacto-telefone-desc">933409696</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div class="info-content">
-                            <h3>Email</h3>
-                            <p>contacto@tslparceiros.pt</p>
+                            <h3 data-i18n="contacto-email">Email</h3>
+                            <p data-i18n="contacto-email-desc">contacto@tslparceiros.pt</p>
                         </div>
                     </div>
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" placeholder="Nome Completo" required>
+                        <input type="text" placeholder="Nome completo" required data-i18n-placeholder="form-nome-placeholder">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email" required>
+                        <input type="email" placeholder="Email" required data-i18n-placeholder="form-email-placeholder">
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="Telemóvel">
+                        <input type="tel" placeholder="Telemóvel" data-i18n-placeholder="form-tel-placeholder">
                     </div>
                     <div class="form-group">
-                        <select required>
-                            <option value="">Selecione o Serviço</option>
-                            <option value="estrategia">1. Estratégia e Criação de Negócio</option>
-                            <option value="financas">2. Finanças e Contabilidade</option>
-                            <option value="marketing">3. Marketing e Imagem</option>
-                            <option value="operacoes">4. Operações e Processos</option>
-                            <option value="sustentabilidade">5. Sustentabilidade e ESG</option>
+                        <select required data-i18n-placeholder="form-servico-placeholder">
+                            <option value="" data-i18n="form-servico-placeholder">Selecione o serviço</option>
+                            <option value="estrategia" data-i18n="form-servico-1">1. Estratégia e Criação de Negócio</option>
+                            <option value="financas" data-i18n="form-servico-2">2. Finanças e Contabilidade</option>
+                            <option value="marketing" data-i18n="form-servico-3">3. Marketing e Imagem</option>
+                            <option value="operacoes" data-i18n="form-servico-4">4. Operações e Processos</option>
+                            <option value="sustentabilidade" data-i18n="form-servico-5">5. Sustentabilidade e ESG</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Mensagem" required></textarea>
+                        <textarea placeholder="Mensagem" required data-i18n-placeholder="form-mensagem-placeholder"></textarea>
                     </div>
-                    <button type="submit" class="submit-button">Enviar Mensagem</button>
+                    <button type="submit" class="submit-button" data-i18n="form-enviar">Enviar mensagem</button>
                 </form>
             </div>
         </section>
 
         <!-- FAQ Section -->
         <section id="faq" class="faq">
-            <h2>Perguntas Frequentes</h2>
+            <h2 data-i18n="faq-title">Perguntas Frequentes</h2>
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Como funciona a consultoria da TSL Parceiros?</h3>
+                        <h3 data-i18n="faq-q1">Como funciona a consultoria da TSL Parceiros?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Nossa consultoria é personalizada e adaptada às necessidades específicas de cada cliente. Começamos com uma análise detalhada da sua situação atual, definimos objetivos claros e desenvolvemos um plano de ação estratégico.</p>
+                        <p data-i18n="faq-a1">A nossa consultoria é personalizada e adaptada às necessidades específicas de cada cliente. Começamos com uma análise detalhada da sua situação atual, definimos objetivos claros e desenvolvemos um plano de ação estratégico.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Quanto tempo dura o processo de consultoria?</h3>
+                        <h3 data-i18n="faq-q2">Quanto tempo dura o processo de consultoria?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>O tempo varia de acordo com os objetivos e complexidade do projeto. Normalmente, nossos programas básicos têm duração de 3 a 6 meses, mas oferecemos acompanhamento contínuo conforme necessário.</p>
+                        <p data-i18n="faq-a2">O tempo varia de acordo com os objetivos e complexidade do projeto. Normalmente, os nossos programas básicos têm duração de 3 a 6 meses, mas oferecemos acompanhamento contínuo conforme necessário.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Quais são os custos envolvidos?</h3>
+                        <h3 data-i18n="faq-q3">Quais são os custos envolvidos?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Os custos são determinados após a análise inicial das necessidades do cliente. Oferecemos diferentes pacotes e opções de pagamento para atender diversos orçamentos.</p>
+                        <p data-i18n="faq-a3">Os custos são determinados após a análise inicial das necessidades do cliente. Oferecemos diferentes pacotes e opções de pagamento para responder a vários orçamentos.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <h3>Como posso começar?</h3>
+                        <h3 data-i18n="faq-q4">Como posso começar?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Contacte-nos através do formulário de contato ou pelo nosso e-mail. Agendar uma consulta inicial gratuita para discutir suas necessidades e objetivos.</p>
+                        <p data-i18n="faq-a4">Contacte-nos através do formulário de contacto ou pelo nosso e-mail. Marque uma consulta inicial gratuita para discutir as suas necessidades e objetivos.</p>
                     </div>
                 </div>
             </div>
@@ -353,61 +359,186 @@
         <!-- Newsletter Section -->
         <section id="newsletter" class="newsletter">
             <div class="newsletter-container">
-                <h2>Subscreva a Nossa Newsletter</h2>
-                <p>Receba as últimas novidades, dicas e informações sobre gestão financeira e desenvolvimento empresarial.</p>
+                <h2 data-i18n="newsletter-title">Subscreva a Nossa Newsletter</h2>
+                <p data-i18n="newsletter-desc">Receba as últimas novidades, dicas e informações sobre gestão financeira e desenvolvimento empresarial.</p>
                 <form id="newsletter-form" class="newsletter-form">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="O Seu Nome" required>
-                        <input type="email" id="email" name="email" placeholder="O Seu Email" required>
+                        <input type="text" id="name" name="name" placeholder="O seu nome" required data-i18n-placeholder="newsletter-name-placeholder">
+                        <input type="email" id="email" name="email" placeholder="O seu email" required data-i18n-placeholder="newsletter-email-placeholder">
                     </div>
-                    <button type="submit" class="subscribe-btn">Subscrever</button>
+                    <button type="submit" class="subscribe-btn" data-i18n="newsletter-btn">Subscrever</button>
                 </form>
-                <p class="privacy-note">Ao subscrever, concorda com a nossa <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
+                <p class="privacy-note" data-i18n="newsletter-privacy">Ao subscrever, concorda com a nossa <a href="politica-privacidade.html" data-i18n="newsletter-privacy-link">Política de Privacidade</a>.</p>
             </div>
         </section>
+
+        <!-- Modal do Questionário de Rastreamento Moderno -->
+        <div id="rastreamento-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:2000; align-items:center; justify-content:center;">
+          <div id="rastreamento-modal-content" style="background:#fff; max-width:95vw; width:600px; border-radius:16px; padding:2.2rem 1.5rem 1.5rem 1.5rem; position:relative; box-shadow:0 8px 32px rgba(0,0,0,0.18); overflow:hidden; min-height:420px;">
+            <button id="close-rastreamento-modal" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:2rem; color:#888; cursor:pointer; transition:color 0.2s;" aria-label="&times;" data-i18n="close-modal">&times;</button>
+            <div id="rastreamento-stepper">
+              <!-- Steps will be injected by JS -->
+            </div>
+            <div id="rastreamento-progress" style="height:4px; background:#eee; border-radius:2px; margin:18px 0 0 0;">
+              <div id="rastreamento-progress-bar" style="height:100%; width:0; background:linear-gradient(90deg,#2ecc71,#1abc9c); border-radius:2px; transition:width 0.4s;"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Popup de feedback -->
+        <div id="rastreamento-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:3000; align-items:center; justify-content:center; background:rgba(0,0,0,0.25);">
+          <div style="background:#fff; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.13); padding:2rem 1.5rem; min-width:260px; max-width:90vw; text-align:center; animation:fadeInPopup 0.5s;">
+            <h3 style="color:#2ecc71; margin-bottom:0.7rem;" data-i18n="rastreamento-popup-title">Obrigado!</h3>
+            <p style="color:#333; font-size:1.1rem;" data-i18n="rastreamento-popup-desc">O seu questionário foi submetido com sucesso.<br>Em breve entraremos em contacto.</p>
+            <button id="close-rastreamento-popup" style="margin-top:1.2rem; background:var(--primary-color,#2ecc71); color:#fff; border:none; border-radius:5px; padding:0.7rem 1.5rem; font-weight:bold; cursor:pointer;" data-i18n="rastreamento-popup-btn">Fechar</button>
+          </div>
+        </div>
+        <style>
+        @keyframes fadeInStep {
+          from { opacity:0; transform:translateY(30px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
+        @keyframes fadeOutStep {
+          from { opacity:1; transform:translateY(0); }
+          to   { opacity:0; transform:translateY(-30px); }
+        }
+        @keyframes fadeInPopup {
+          from { opacity:0; transform:scale(0.95); }
+          to   { opacity:1; transform:scale(1); }
+        }
+        #rastreamento-modal-content input, #rastreamento-modal-content select {
+          width:100%; padding:0.7rem; border:1px solid #e0e0e0; border-radius:6px; margin-top:0.3rem; margin-bottom:1.1rem; font-size:1rem; transition:border 0.2s; }
+        #rastreamento-modal-content input:focus, #rastreamento-modal-content select:focus {
+          border:1.5px solid #2ecc71; outline:none; }
+        #rastreamento-modal-content label { font-weight:500; color:#2c3e50; font-size:1.05rem; }
+        #rastreamento-modal-content .rastreamento-step-title { font-size:1.15rem; font-weight:600; color:#1abc9c; margin-bottom:0.7rem; }
+        #rastreamento-modal-content .rastreamento-step-desc { font-size:0.98rem; color:#666; margin-bottom:1.2rem; }
+        #rastreamento-modal-content .rastreamento-step-btns { display:flex; justify-content:space-between; gap:1rem; margin-top:1.2rem; }
+        #rastreamento-modal-content .rastreamento-step-btns button { flex:1; padding:0.7rem 0; border:none; border-radius:5px; font-weight:bold; font-size:1rem; cursor:pointer; transition:background 0.2s; }
+        #rastreamento-modal-content .rastreamento-step-btns .prev-btn { background:#eee; color:#333; }
+        #rastreamento-modal-content .rastreamento-step-btns .next-btn { background:var(--primary-color,#2ecc71); color:#fff; }
+        #rastreamento-modal-content .rastreamento-step-btns .submit-btn { background:linear-gradient(90deg,#2ecc71,#1abc9c); color:#fff; }
+        #rastreamento-modal-content .rastreamento-step-anim { animation:fadeInStep 0.5s; }
+        @media (max-width:600px) { #rastreamento-modal-content { width:98vw; min-height:unset; padding:1.2rem 0.5rem 1.2rem 0.5rem; } }
+        /* Navbar adjustments for flags and alignment */
+        nav {
+          min-height: 80px;
+          padding: 0 2vw;
+          background: #fff;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+          flex: 1;
+          justify-content: center;
+          margin: 0;
+          padding: 0;
+        }
+        .nav-links li a {
+          font-size: 0.98rem;
+          font-weight: 500;
+          padding: 0.6rem 0.8rem;
+          display: flex;
+          align-items: center;
+          height: 100%;
+          color: #222;
+          text-decoration: none;
+          transition: color 0.2s;
+          justify-content: center;
+        }
+        .nav-links li a:hover {
+          color: #1abc9c;
+        }
+        #language-selector img {
+          height: 18px;
+          width: 24px;
+          transition: box-shadow 0.2s, transform 0.2s;
+        }
+        #language-selector img:hover {
+          box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+          transform: scale(1.08);
+        }
+        .logo {
+          flex-shrink: 0;
+        }
+        @media (max-width: 900px) {
+          nav {
+            flex-wrap: wrap;
+            min-height: unset;
+            padding: 0 1vw;
+          }
+          .nav-links {
+            flex-wrap: wrap;
+            gap: 0.1rem;
+          }
+          #language-selector {
+            margin-left: 0.5rem;
+          }
+        }
+        @media (max-width: 700px) {
+          nav {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .nav-links {
+            flex-direction: column;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: flex-start;
+          }
+          #language-selector {
+            margin-left: 0;
+            margin-top: 0.5rem;
+          }
+        }
+        </style>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>TSL Parceiros</h3>
-                <p>A transformar negócios com excelência e inovação.</p>
+                <h3 data-i18n="footer-title">TSL Parceiros</h3>
+                <p data-i18n="footer-desc">A transformar negócios com excelência e inovação.</p>
                 <ul class="footer-links">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#valores">Valores</a></li>
+                    <li><a href="#inicio" data-i18n="footer-link-inicio">Início</a></li>
+                    <li><a href="#sobre" data-i18n="footer-link-sobre">Sobre</a></li>
+                    <li><a href="#servicos" data-i18n="footer-link-servicos">Serviços</a></li>
+                    <li><a href="#valores" data-i18n="footer-link-valores">Valores</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Contacte-nos</h3>
+                <h3 data-i18n="footer-contact">Contacte-nos</h3>
                 <ul class="contact-info">
                     <li>
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Rua Mira Fernandes 170F loja F,<br>2910-430 Setúbal, Portugal</span>
+                        <span data-i18n="footer-morada">Rua Bocage 67, CP 2900-277, Setúbal</span>
                     </li>
                     <li>
                         <i class="fas fa-phone"></i>
-                        <span>+351 933137935</span>
+                        <span data-i18n="footer-phone">933409696</span>
                     </li>
                     <li>
                         <i class="fas fa-envelope"></i>
-                        <span>contacto@tslparceiros.pt</span>
+                        <span data-i18n="footer-email">contacto@tslparceiros.pt</span>
                     </li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Os Nossos Valores</h3>
+                <h3 data-i18n="footer-values-title">Os Nossos Valores</h3>
                 <ul class="footer-values">
-                    <li><i class="fas fa-check"></i><span>Excelência</span></li>
-                    <li><i class="fas fa-check"></i><span>Inovação</span></li>
-                    <li><i class="fas fa-check"></i><span>Compromisso</span></li>
-                    <li><i class="fas fa-check"></i><span>Confiança</span></li>
+                    <li><i class="fas fa-check"></i><span data-i18n="footer-value-excelencia">Excelência</span></li>
+                    <li><i class="fas fa-check"></i><span data-i18n="footer-value-inovacao">Inovação</span></li>
+                    <li><i class="fas fa-check"></i><span data-i18n="footer-value-compromisso">Compromisso</span></li>
+                    <li><i class="fas fa-check"></i><span data-i18n="footer-value-confianca">Confiança</span></li>
                 </ul>
-                <a href="politica-privacidade.html" class="privacy-link">Política de Privacidade</a>
+                <a href="politica-privacidade.html" class="privacy-link" data-i18n="footer-privacy">Política de Privacidade</a>
             </div>
             <div class="footer-section">
-                <h3>Redes Sociais</h3>
+                <h3 data-i18n="footer-redes">Redes Sociais</h3>
                 <div class="social-links">
                     <a href="https://instagram.com/tslparceiros" target="_blank" title="Instagram">
                         <i class="fab fa-instagram"></i>
@@ -422,14 +553,14 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 TSL Parceiros. Todos os direitos reservados.</p>
+            <p data-i18n="footer-direitos">© 2024 TSL Parceiros. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <!-- Botão Flutuante do WhatsApp -->
     <a href="https://wa.me/351213000000" class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
-        <span class="whatsapp-text">Fale Conosco</span>
+        <span class="whatsapp-text" data-i18n="whatsapp-fale">Fale connosco</span>
     </a>
 
     <script src="script.js"></script>

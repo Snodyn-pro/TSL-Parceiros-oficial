@@ -386,6 +386,7 @@ nav {
     letter-spacing: -0.5px;
 }
 
+/* Centralizar o texto do hero principal */
 .hero-subtitle {
     font-size: 1.2rem;
     margin: 1.5rem 0;
@@ -394,6 +395,11 @@ nav {
     line-height: 1.6;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     letter-spacing: 0.5px;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: 100%;
 }
 
 .hero-stats {
@@ -1807,13 +1813,56 @@ footer {
 }
 
 .value-card h3 {
-    display: flex;
-    align-items: flex-start; /* Alinhar ao topo para textos com múltiplas linhas */
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    color: var(--dark-color);
-    position: relative;
-    line-height: 1.3;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.7rem !important;
+    margin-bottom: 1.3rem !important;
+    font-size: 1.18rem !important;
+    color: var(--dark-color) !important;
+    position: relative !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+    background: none !important;
+    padding: 0 !important;
+    min-height: 2.7em !important;
+    max-height: 3.4em !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+}
+
+.value-card h3 .value-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.7rem !important;
+    min-width: 32px !important;
+    margin: 0 !important;
+    color: var(--primary-color) !important;
+}
+
+.value-card h3 .value-title-text {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: normal !important;
+    font-weight: 600 !important;
+    flex: 1 1 0% !important;
+}
+
+@media (max-width: 768px) {
+    .value-card h3 {
+        font-size: 1.05rem !important;
+        gap: 0.5rem !important;
+        min-height: 2.5em !important;
+        max-height: 3.1em !important;
+    }
+    .value-card h3 .value-icon {
+        font-size: 1.3rem !important;
+        min-width: 24px !important;
+    }
 }
 
 .value-icon {
@@ -1858,8 +1907,10 @@ footer {
     }
 
     .value-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.1rem !important;
+        padding: 1rem !important;
+        min-height: 2.6em !important;
+        max-height: 3.2em !important;
     }
 
     .value-card p {
@@ -3272,4 +3323,111 @@ h1, h2, h3, h4, h5, h6,
     margin: 0;
     color: #666;
     line-height: 1.6;
+}
+
+/* Force hero-subtitle to always be centered, overriding all other rules */
+.hero-subtitle {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: 100%;
+    text-justify: none !important;
+    word-break: normal !important;
+    hyphens: none !important;
+}
+
+/* Estilo moderno para grupo de checkboxes do questionário */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 1.2rem 0 0.5rem 0;
+  align-items: flex-start;
+}
+.checkbox-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  gap: 1rem !important;
+  font-size: 1rem !important;
+  position: relative !important;
+  margin-bottom: 0.9rem !important;
+  padding: 0.2rem 0.1rem !important;
+  border-radius: 6px !important;
+  transition: background 0.2s !important;
+}
+.checkbox-item label {
+  flex: 1 !important;
+  text-align: left !important;
+  margin: 0 !important;
+  font-weight: 500 !important;
+  color: var(--dark-color) !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.4 !important;
+  cursor: pointer !important;
+}
+.checkbox-item input[type="checkbox"] {
+  accent-color: var(--primary-color) !important;
+  min-width: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  cursor: pointer !important;
+  align-self: center !important;
+  transition: box-shadow 0.2s, border 0.2s !important;
+  border-radius: 4px !important;
+  border: 1.5px solid #b2dfdb !important;
+}
+.checkbox-item input[type="text"] {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-top: 0.2rem !important;
+  padding: 0.5rem 0.7rem !important;
+  border-radius: 6px !important;
+  border: 1.5px solid #b2dfdb !important;
+  font-size: 1rem !important;
+  min-width: 120px !important;
+  box-sizing: border-box !important;
+  background: #f7fafc !important;
+  transition: border 0.2s, box-shadow 0.2s !important;
+}
+@media (max-width: 480px) {
+  .checkbox-group {
+    padding: 0.8rem 0.5rem 0.5rem 0.5rem !important;
+  }
+  .checkbox-item {
+    font-size: 0.95rem !important;
+    gap: 0.3rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+  .checkbox-item label {
+    margin-right: 0.5rem !important;
+  }
+  .checkbox-item input[type="text"] {
+    max-width: 100% !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+.checkbox-item label {
+  flex: 1 !important;
+  text-align: left !important;
+  margin-right: 1rem !important;
+  font-weight: 500 !important;
+  color: var(--dark-color) !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.4 !important;
+  cursor: pointer !important;
+}
+@media (max-width: 600px) {
+  .checkbox-item label {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
 }
